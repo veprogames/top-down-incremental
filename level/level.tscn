@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=3 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="2_633h6"]
 
 [node name="Level" type="Node2D"]
 
@@ -21,7 +22,7 @@ z_index = 1
 position = Vector2(634, 481)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(6, 6)
+zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 16.0
 
@@ -34,3 +35,66 @@ polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 59
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-960, -704)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 599, 983, 882, 1363, 974, 1986, 867, 1965, 520, 1727, 601, 2008, 213, 1642, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-1592, -34)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
+polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 599, 983, 882, 1363, 974, 1986, 867, 1965, 520, 1727, 601, 2008, 213, 1642, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D3"]
+polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(-850, 606)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D4"]
+polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 599, 983, 882, 1363, 974, 1986, 867, 1965, 520, 1727, 601, 2008, 213, 1642, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D4"]
+polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
+
+[node name="Enemy" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(461, 470)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(475, 434)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(496, 470)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(469, 505)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(500, 506)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(510, 449)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(524, 413)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(545, 449)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(518, 484)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_633h6")]
+position = Vector2(549, 485)
