@@ -33,11 +33,12 @@ func _physics_process(delta: float) -> void:
 	# faster smoothing at higher velocities to prevent rotation lagging behind
 	rotation = lerp_angle(rotation, target_rotation, velocity.length() * delta * 0.01)
 	
+	move_and_slide()
+	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
-		shoot.call_deferred()
-	
-	move_and_slide()
+		if velocity.length() > 100:
+			shoot.call_deferred()
 
 
 func shoot() -> void:
