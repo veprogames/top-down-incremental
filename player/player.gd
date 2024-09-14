@@ -4,7 +4,8 @@ extends CharacterBody2D
 var BulletScene: PackedScene = preload("res://bullet/bullet.tscn")
 
 var accumulated_motion: Vector2 = Vector2.ZERO
-const MOVE_SPEED: float = 400.0
+const MOVE_SPEED: float = 50.0
+const VELOCITY_THRESHOLD: float = 12.0
 
 var target_rotation: float = 0.0
 
@@ -24,20 +25,20 @@ func _physics_process(delta: float) -> void:
 	velocity = accumulated_motion
 	accumulated_motion = Vector2.ZERO
 	
-	shoot_timer += velocity.length() / 50_000
+	shoot_timer += velocity.length() / 7_500
 	
 	# prevent jittering by only rotating at a min. velocity
-	if velocity.length() > 100:
+	if velocity.length() > VELOCITY_THRESHOLD:
 		target_rotation = velocity.angle()
 	
 	# faster smoothing at higher velocities to prevent rotation lagging behind
-	rotation = lerp_angle(rotation, target_rotation, velocity.length() * delta * 0.01)
+	rotation = lerp_angle(rotation, target_rotation, velocity.length() * delta * 0.1)
 	
 	move_and_slide()
 	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
-		if velocity.length() > 100:
+		if velocity.length() > VELOCITY_THRESHOLD:
 			shoot.call_deferred()
 
 
