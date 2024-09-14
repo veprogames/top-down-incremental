@@ -22,3 +22,13 @@ color = Color(0.129412, 0.129412, 0.129412, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_c1fdt")]
 position = Vector2(634, 481)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 599, 983, 882, 1363, 974, 1986, 867, 1965, 520, 1727, 601, 2008, 213, 1642, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
