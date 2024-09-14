@@ -1,7 +1,7 @@
 class_name Bullet
 extends Area2D
 
-const SPEED_MULTIPLIER_BASE: float = 2.0
+const SPEED_MULTIPLIER_BASE: float = 1.5
 const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
 
 @export var base_speed: float = 0.0
