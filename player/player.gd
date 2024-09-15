@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 	velocity = accumulated_motion
 	accumulated_motion = Vector2.ZERO
 	
-	shoot_timer += velocity.length() / 7_500
+	var firerate_multiplier: float = 1 + 0.005 * velocity.length()
+	shoot_timer += firerate_multiplier * delta
 	
 	# prevent jittering by only rotating at a min. velocity
 	if velocity.length() > VELOCITY_THRESHOLD:
@@ -38,13 +39,12 @@ func _physics_process(delta: float) -> void:
 	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
-		if velocity.length() > VELOCITY_THRESHOLD:
-			shoot.call_deferred()
+		shoot.call_deferred()
 
 
 func shoot() -> void:
 	var bullet: Bullet = BulletScene.instantiate() as Bullet
 	bullet.position = global_position
 	bullet.rotation = rotation
-	bullet.base_speed = velocity.length()
+	bullet.base_speed = velocity.length() + 100
 	owner.add_child(bullet)
