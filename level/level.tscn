@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=5 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
+[ext_resource type="PackedScene" uid="uid://yam6ts6l84j0" path="res://player/ui/player_damage_display.tscn" id="1_sr8ao"]
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="2_633h6"]
+[ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
 
 [node name="Level" type="Node2D"]
 
@@ -17,14 +19,22 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_c1fdt")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerDamageDisplay" parent="CanvasLayer" node_paths=PackedStringArray("player_damage") instance=ExtResource("1_sr8ao")]
+player_damage = NodePath("../../PlayerDamage")
+
+[node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
 z_index = 1
 position = Vector2(634, 481)
+player_damage = NodePath("../PlayerDamage")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 16.0
+
+[node name="PlayerDamage" parent="." instance=ExtResource("3_xo2ng")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -73,28 +83,12 @@ polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 97
 position = Vector2(461, 470)
 
 [node name="Enemy2" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(475, 434)
+position = Vector2(467, 426)
 
 [node name="Enemy3" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(496, 470)
+position = Vector2(420, 408)
+color = Color(1, 1, 0, 1)
 
 [node name="Enemy4" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(469, 505)
-
-[node name="Enemy5" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(500, 506)
-
-[node name="Enemy6" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(510, 449)
-
-[node name="Enemy7" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(524, 413)
-
-[node name="Enemy8" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(545, 449)
-
-[node name="Enemy9" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(518, 484)
-
-[node name="Enemy10" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(549, 485)
+position = Vector2(414, 447)
+color = Color(1, 1, 0, 1)

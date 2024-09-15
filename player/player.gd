@@ -11,6 +11,8 @@ var target_rotation: float = 0.0
 
 var shoot_timer: float = 0.0
 
+@export var player_damage: PlayerDamage
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -46,5 +48,6 @@ func shoot() -> void:
 	var bullet: Bullet = BulletScene.instantiate() as Bullet
 	bullet.position = global_position
 	bullet.rotation = rotation
+	bullet.damage = player_damage.get_damage()
 	bullet.base_speed = velocity.length() + 100
 	owner.add_child(bullet)

@@ -10,6 +10,8 @@ var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 const MAX_TRAVEL_DISTANCE: float = 600.0
 var travelled: float = 0.0
 
+@export var damage: float = 1.0
+
 @onready var sprite: Sprite2D = $Sprite
 
 
@@ -30,8 +32,11 @@ func _physics_process(delta: float) -> void:
 		0b100
 	)
 	var collision: Dictionary = space_state.intersect_ray(query)
-	if collision:
-		var normal_angle: float = collision.normal.angle() as float
+	if collision and "normal" in collision:
+		@warning_ignore("unsafe_cast") # Assume Vector2
+		var normal: Vector2 = collision.normal as Vector2
+		assert(normal != null)
+		var normal_angle: float = normal.angle() as float
 		rotation += 2 * (normal_angle - rotation) + PI
 	
 	position += motion
