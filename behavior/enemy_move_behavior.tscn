@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb4bifkgouwi6"]
+
+[ext_resource type="PackedScene" uid="uid://cpsik7abqkt67" path="res://behavior/base_behavior.tscn" id="1_8b4ms"]
+[ext_resource type="Script" path="res://behavior/enemy_move_behavior.gd" id="2_xnuhc"]
+
+[node name="EnemyMoveBehavior" groups=["enemy_move_behavior"] instance=ExtResource("1_8b4ms")]
+script = ExtResource("2_xnuhc")

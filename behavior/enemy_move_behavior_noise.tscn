@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3nk6b160b7an"]
+
+[ext_resource type="PackedScene" uid="uid://bb4bifkgouwi6" path="res://behavior/enemy_move_behavior.tscn" id="1_l0786"]
+[ext_resource type="Script" path="res://enemy_move_behavior_noise.gd" id="2_uayh5"]
+
+[node name="EnemyMoveBehaviorNoise" instance=ExtResource("1_l0786")]
+script = ExtResource("2_uayh5")
+speed = 1.0
+amplitude = 100.0

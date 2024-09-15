@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpsik7abqkt67"]
+
+[ext_resource type="Script" path="res://behavior/base_behavior.gd" id="1_yh7of"]
+
+[node name="BaseBehavior" type="Node"]
+script = ExtResource("1_yh7of")
