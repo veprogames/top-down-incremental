@@ -39,7 +39,6 @@ window/vsync/vsync_mode=0
 [global_group]
 
 player=""
-enemy_move_behavior=""
 
 [gui]
 
