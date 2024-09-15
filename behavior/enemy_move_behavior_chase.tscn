@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3h6i1t8cbtp"]
+
+[ext_resource type="PackedScene" uid="uid://bb4bifkgouwi6" path="res://behavior/enemy_move_behavior.tscn" id="1_mswap"]
+[ext_resource type="Script" path="res://behavior/enemy_move_behavior_chase.gd" id="2_gm15q"]
+
+[node name="EnemyMoveBehaviorChase" instance=ExtResource("1_mswap")]
+script = ExtResource("2_gm15q")
+speed = 100.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bprric2282qeg"]
+[gd_scene load_steps=7 format=3 uid="uid://bprric2282qeg"]
 
 [ext_resource type="Texture2D" uid="uid://fh1o0uq1jl33" path="res://enemy/enemy_red.png" id="1_4povp"]
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_kqjdg"]
+[ext_resource type="PackedScene" uid="uid://3h6i1t8cbtp" path="res://behavior/enemy_move_behavior_chase.tscn" id="3_0lsiy"]
 [ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="3_m1qhl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_du478"]
@@ -29,6 +30,12 @@ collision_mask = 6
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_xsuyj")
 
+[node name="EnemyMoveBehaviorChase" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("3_0lsiy")]
+speed = 125.0
+enemy = NodePath("..")
+
 [node name="EnemyMoveBehaviorNoise" parent="." instance=ExtResource("3_m1qhl")]
+speed = 3.0
+amplitude = 500.0
 
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]

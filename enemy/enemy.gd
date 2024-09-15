@@ -8,7 +8,7 @@ var current_hp: float = hp
 var move_behaviors: Array[EnemyMoveBehavior]
 
 func _ready() -> void:
-	move_behaviors.assign(Utils.get_children_of_group(self, "enemy_move_behavior"))
+	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
 
 
 func _physics_process(_delta: float) -> void:
