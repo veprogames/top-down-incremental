@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
 [ext_resource type="PackedScene" uid="uid://yam6ts6l84j0" path="res://player/ui/player_damage_display.tscn" id="1_sr8ao"]
-[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="2_633h6"]
 [ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
+[ext_resource type="PackedScene" uid="uid://bxqjtbspu7034" path="res://spawner/spawner.tscn" id="4_gancj"]
 
 [node name="Level" type="Node2D"]
 
@@ -79,16 +79,8 @@ polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 59
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D4"]
 polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
 
-[node name="Enemy" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(461, 470)
+[node name="Spawner" parent="." instance=ExtResource("4_gancj")]
+position = Vector2(793, 482)
 
-[node name="Enemy2" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(467, 426)
-
-[node name="Enemy3" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(420, 408)
-color = Color(1, 1, 0, 1)
-
-[node name="Enemy4" parent="." instance=ExtResource("2_633h6")]
-position = Vector2(414, 447)
-color = Color(1, 1, 0, 1)
+[node name="Spawner2" parent="." instance=ExtResource("4_gancj")]
+position = Vector2(667, 321)
