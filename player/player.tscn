@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://oyiycif2f18h"]
+[gd_scene load_steps=4 format=3 uid="uid://oyiycif2f18h"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ei65g"]
 [ext_resource type="Texture2D" uid="uid://bioi1y47skrq7" path="res://player/player.png" id="1_gynj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qfxhs"]
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 12
@@ -10,5 +13,5 @@ script = ExtResource("1_ei65g")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gynj0")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(8, 0, 1, -8, -2, -4, -8, -4, -7, 0, -8, 4, -2, 4, 1, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qfxhs")

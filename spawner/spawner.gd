@@ -1,5 +1,5 @@
 class_name Spawner
-extends Node2D
+extends StaticBody2D
 
 var EnemyScene: PackedScene = preload("res://enemy/enemy.tscn")
 
