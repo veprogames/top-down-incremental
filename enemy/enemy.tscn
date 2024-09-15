@@ -3,18 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://fh1o0uq1jl33" path="res://enemy/enemy_red.png" id="1_4povp"]
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_kqjdg"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_h3mgd"]
-frequency = 0.0516
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_du478"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsuyj"]
+radius = 9.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 14
 motion_mode = 1
 script = ExtResource("1_kqjdg")
-noise = SubResource("FastNoiseLite_h3mgd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_4povp")
@@ -27,6 +26,6 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea"]
-shape = SubResource("CircleShape2D_du478")
+shape = SubResource("CircleShape2D_xsuyj")
 
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]

@@ -7,7 +7,7 @@ const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
 @export var base_speed: float = 0.0
 var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 
-const MAX_TRAVEL_DISTANCE: float = 5000.0
+const MAX_TRAVEL_DISTANCE: float = 600.0
 var travelled: float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite
