@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://esy43au0ossc"]
+
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_ogybm"]
+[ext_resource type="Texture2D" uid="uid://dvb0opui13ir1" path="res://enemy/enemy_green.png" id="2_nkbcx"]
+
+[node name="EnemyGreen" instance=ExtResource("1_ogybm")]
+hp = 150.0
+color = Color(0, 1, 0, 1)
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_nkbcx")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(19, 0, 8, -19, -8, -19, -19, 0, -8, 19, 9, 19)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea" index="0"]
+polygon = PackedVector2Array(21, 0, 16, -16, 9, -20, -9, -20, -18, -14, -20, 0, -17, 13, -9, 20, 9, 20, 17, 13)
+
+[node name="CollisionShape2D2" parent="HitArea" index="1"]
+shape = null

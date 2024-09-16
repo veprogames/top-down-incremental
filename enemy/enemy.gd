@@ -3,11 +3,12 @@ extends CharacterBody2D
 
 @export var hp: float = 1
 @export var color: Color = Color.RED
-var current_hp: float = hp
+var current_hp: float
 
 var move_behaviors: Array[EnemyMoveBehavior]
 
 func _ready() -> void:
+	current_hp = hp
 	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
 
 

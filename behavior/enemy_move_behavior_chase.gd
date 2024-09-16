@@ -13,6 +13,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
+	assert(enemy != null)
+	
 	if player:
 		velocity = (player.position - enemy.position).normalized() * speed
 	else:
