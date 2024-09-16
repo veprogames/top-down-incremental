@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://esy43au0ossc"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_ogybm"]
-[ext_resource type="Texture2D" uid="uid://dvb0opui13ir1" path="res://enemy/enemy_green.png" id="2_nkbcx"]
+[ext_resource type="Texture2D" uid="uid://dvb0opui13ir1" path="res://enemy/enemies/enemy_green.png" id="2_nkbcx"]
 
 [node name="EnemyGreen" instance=ExtResource("1_ogybm")]
 hp = 150.0

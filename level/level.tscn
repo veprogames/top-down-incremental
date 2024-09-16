@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=6 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
 [ext_resource type="PackedScene" uid="uid://yam6ts6l84j0" path="res://player/ui/player_damage_display.tscn" id="1_sr8ao"]
+[ext_resource type="PackedScene" uid="uid://gbdae67q3h10" path="res://player/player_camera.tscn" id="3_wppie"]
 [ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
 [ext_resource type="PackedScene" uid="uid://bxqjtbspu7034" path="res://spawner/spawner.tscn" id="4_gancj"]
 
@@ -29,10 +30,8 @@ z_index = 1
 position = Vector2(634, 481)
 player_damage = NodePath("../PlayerDamage")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
-process_callback = 0
-position_smoothing_speed = 16.0
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("3_wppie")]
+player = NodePath("..")
 
 [node name="PlayerDamage" parent="." instance=ExtResource("3_xo2ng")]
 

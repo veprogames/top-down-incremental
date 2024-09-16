@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://onfj8mic8p58"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_ogybm"]
-[ext_resource type="Texture2D" uid="uid://how7e07ibnov" path="res://enemy/enemy_yellow.png" id="2_bg0i7"]
+[ext_resource type="Texture2D" uid="uid://how7e07ibnov" path="res://enemy/enemies/enemy_yellow.png" id="2_bg0i7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5143"]
 size = Vector2(22, 22)
