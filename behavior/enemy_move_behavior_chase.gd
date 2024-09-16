@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	
 	assert(enemy != null)
 	
-	if player:
+	if is_instance_valid(player):
 		velocity = (player.position - enemy.position).normalized() * speed
 	else:
 		velocity = Vector2.ZERO
