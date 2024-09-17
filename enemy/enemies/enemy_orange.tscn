@@ -10,14 +10,8 @@ color = Color(1, 0.501961, 0, 1)
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_wybay")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = null
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(14, 0, -12, -12, -12, 12)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(11, 0, -11, -11, -11, 11)
-
-[node name="CollisionShape2D2" parent="HitArea" index="0"]
-shape = null
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea" index="1"]
-polygon = PackedVector2Array(14, 0, -13, -13, -13, 13)
+[node name="CollisionShape2D" parent="." index="2"]
+disabled = true

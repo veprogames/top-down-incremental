@@ -13,6 +13,7 @@ config_version=5
 config/name="Top Down Incremental"
 run/main_scene="res://level/level.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+run/max_fps=240
 config/icon="res://icon.svg"
 
 [autoload]
@@ -53,7 +54,10 @@ theme/custom="res://ui_theme.tres"
 
 [physics]
 
-common/physics_ticks_per_second=240
+common/physics_ticks_per_second=120
+2d/physics_engine="GodotPhysics2D"
+2d/solver/solver_iterations=4
+common/physics_interpolation=true
 
 [rendering]
 

@@ -23,11 +23,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_hit_area_area_entered(area: Area2D) -> void:
-	var bullet: Bullet = area as Bullet
-	if bullet:
-		area.queue_free()
-		current_hp -= bullet.damage
-		if current_hp <= 0:
-			Events.enemy_died.emit(self)
-			queue_free()
+func damage(amount: float) -> void:
+	current_hp -= amount
+	if current_hp <= 0:
+		Events.enemy_died.emit(self)
+		queue_free()

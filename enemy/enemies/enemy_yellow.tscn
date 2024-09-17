@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://onfj8mic8p58"]
+[gd_scene load_steps=4 format=3 uid="uid://onfj8mic8p58"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_ogybm"]
 [ext_resource type="Texture2D" uid="uid://how7e07ibnov" path="res://enemy/enemies/enemy_yellow.png" id="2_bg0i7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5143"]
 size = Vector2(22, 22)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjru1"]
-size = Vector2(28, 28)
 
 [node name="EnemyYellow" instance=ExtResource("1_ogybm")]
 hp = 30.0
@@ -19,7 +16,3 @@ texture = ExtResource("2_bg0i7")
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_k5143")
-
-[node name="CollisionShape2D2" parent="HitArea" index="0"]
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_fjru1")
