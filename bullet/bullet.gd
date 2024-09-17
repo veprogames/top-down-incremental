@@ -43,10 +43,3 @@ func _physics_process(delta: float) -> void:
 	travelled += motion.length() / MAX_TRAVEL_DISTANCE
 	
 	speed_multiplier += SPEED_MULTIPLIER_ACCELERATION * delta
-
-
-func _on_body_entered(body: Node2D) -> void:
-	var enemy: Enemy = body as Enemy
-	if enemy:
-		queue_free()
-		enemy.damage(damage)

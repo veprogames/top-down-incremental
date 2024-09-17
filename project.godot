@@ -55,7 +55,6 @@ theme/custom="res://ui_theme.tres"
 [physics]
 
 common/physics_ticks_per_second=120
-2d/physics_engine="GodotPhysics2D"
 2d/solver/solver_iterations=4
 common/physics_interpolation=true
 

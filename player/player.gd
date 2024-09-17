@@ -56,16 +56,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	for i: int in range(get_slide_collision_count()):
-		var collision: KinematicCollision2D = get_slide_collision(i)
-		if collision:
-			var enemy: Enemy = collision.get_collider() as Enemy
-			if enemy and can_get_hit():
-				var dir: Vector2 = (enemy.position - position).normalized()
-				secondary_velocity -= dir * (100 + enemy.velocity.length() * 4)
-				took_damage.emit()
-			
-	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
 		shoot.call_deferred()
@@ -80,6 +70,12 @@ func shoot() -> void:
 	bullet.damage = player_damage.get_damage()
 	bullet.base_speed = velocity.length() + 100
 	owner.add_child(bullet)
+
+
+func try_knock(vec: Vector2) -> void:
+	if can_get_hit():
+		secondary_velocity += vec
+		took_damage.emit()
 
 
 func can_get_hit() -> bool:

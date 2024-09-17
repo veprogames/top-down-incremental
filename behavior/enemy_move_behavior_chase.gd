@@ -10,8 +10,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group(&"player")
 
 
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+func recalculate_velocity() -> void:
+	super.recalculate_velocity()
 	
 	assert(enemy != null)
 	
