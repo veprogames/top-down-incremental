@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc4ilkra67325"]
+
+[ext_resource type="PackedScene" uid="uid://swl8a1uh5fo7" path="res://bullet/bullet_pod.tscn" id="1_fe407"]
+[ext_resource type="Script" path="res://bullet/enemy/bullet_pod_enemy.gd" id="2_m4t4w"]
+[ext_resource type="PackedScene" uid="uid://bt4vddklvsmgm" path="res://bullet/enemy/bullet_enemy.tscn" id="3_62ny7"]
+
+[node name="BulletPodEnemy" instance=ExtResource("1_fe407")]
+script = ExtResource("2_m4t4w")
+firerate = 0.0
+bullet_scene = ExtResource("3_62ny7")
+
+[node name="Timer" type="Timer" parent="." index="0"]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

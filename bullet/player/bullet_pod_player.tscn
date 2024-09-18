@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://disa2umb2ec1l"]
+
+[ext_resource type="PackedScene" uid="uid://swl8a1uh5fo7" path="res://bullet/bullet_pod.tscn" id="1_qc16u"]
+[ext_resource type="Script" path="res://bullet/player/bullet_pod_player.gd" id="2_ft0aj"]
+[ext_resource type="PackedScene" uid="uid://bn6xrko8wm3mq" path="res://bullet/player/bullet_player.tscn" id="3_6kwn2"]
+
+[node name="BulletPodPlayer" instance=ExtResource("1_qc16u")]
+script = ExtResource("2_ft0aj")
+bullet_scene = ExtResource("3_6kwn2")

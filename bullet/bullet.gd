@@ -10,20 +10,17 @@ var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 const MAX_TRAVEL_DISTANCE: float = 600.0
 var travelled: float = 0.0
 
-@export var damage: float = 1.0
-
 @onready var sprite: Sprite2D = $Sprite
 
 
 func _process(_delta: float) -> void:
-	sprite.modulate.a = 1.0 - travelled
+	sprite.modulate.a = min(1.0, 2.0 * (1.0 - travelled))
 	if travelled >= 1.0:
 		queue_free()
 
 
 func _physics_process(delta: float) -> void:
-	var motion: Vector2 = Vector2.RIGHT.rotated(rotation)
-	motion *= base_speed * speed_multiplier * delta
+	var motion: Vector2 = get_velocity() * delta
 	
 	var ray_cast_result: Utils.RayCastResult = Utils.cast_ray(self, motion, 0b100)
 	if ray_cast_result:
@@ -35,3 +32,9 @@ func _physics_process(delta: float) -> void:
 	travelled += motion.length() / MAX_TRAVEL_DISTANCE
 	
 	speed_multiplier += SPEED_MULTIPLIER_ACCELERATION * delta
+
+
+func get_velocity() -> Vector2:
+	var motion: Vector2 = Vector2.RIGHT.rotated(rotation)
+	motion *= base_speed * speed_multiplier
+	return motion

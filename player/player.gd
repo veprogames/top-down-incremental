@@ -24,6 +24,8 @@ var hp: int = 10
 
 @export var player_damage: PlayerDamage
 
+@onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -64,12 +66,7 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot() -> void:
-	var bullet: Bullet = BulletScene.instantiate() as Bullet
-	bullet.position = global_position
-	bullet.rotation = rotation
-	bullet.damage = player_damage.get_damage()
-	bullet.base_speed = velocity.length() + 100
-	owner.add_child(bullet)
+	owner.add_child(bullet_pod_player.create_bullet())
 
 
 func try_knock(vec: Vector2) -> void:

@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://oyiycif2f18h"]
+[gd_scene load_steps=5 format=3 uid="uid://oyiycif2f18h"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ei65g"]
 [ext_resource type="Texture2D" uid="uid://bioi1y47skrq7" path="res://player/player.png" id="1_gynj0"]
+[ext_resource type="PackedScene" uid="uid://disa2umb2ec1l" path="res://bullet/player/bullet_pod_player.tscn" id="3_tc3r6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qfxhs"]
 radius = 8.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_ei65g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,6 +16,9 @@ texture = ExtResource("1_gynj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qfxhs")
+
+[node name="BulletPodPlayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_tc3r6")]
+player = NodePath("..")
 
 [connection signal="died" from="." to="." method="_on_died"]
 [connection signal="took_damage" from="." to="." method="_on_took_damage"]

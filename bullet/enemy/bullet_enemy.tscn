@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt4vddklvsmgm"]
+
+[ext_resource type="PackedScene" uid="uid://jd8o7mwcbif0" path="res://bullet/bullet.tscn" id="1_1xy7o"]
+[ext_resource type="Texture2D" uid="uid://b204ep1hunuub" path="res://bullet/enemy/bullet_enemy.png" id="2_bvs3k"]
+[ext_resource type="Script" path="res://bullet/enemy/bullet_enemy.gd" id="2_mefsr"]
+
+[node name="BulletEnemy" instance=ExtResource("1_1xy7o")]
+collision_mask = 5
+script = ExtResource("2_mefsr")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_bvs3k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

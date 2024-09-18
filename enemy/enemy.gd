@@ -6,6 +6,7 @@ extends Area2D
 var current_hp: float
 
 var move_behaviors: Array[EnemyMoveBehavior]
+var bullet_pods: Array[BulletPodEnemy]
 
 var velocity: Vector2
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -14,6 +15,9 @@ const KNOCKBACK_FRICTION: float = 2
 func _ready() -> void:
 	current_hp = hp
 	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
+	
+	for pod: BulletPodEnemy in Utils.get_children_of_type(self, BulletPod):
+		pod.timeout.connect(shoot)
 
 
 func _physics_process(delta: float) -> void:
@@ -45,6 +49,11 @@ func damage(amount: float) -> void:
 		queue_free()
 
 
+func shoot(bullet: BulletEnemy) -> void:
+	print(owner)
+	get_tree().current_scene.add_child(bullet)
+
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	set_process(false)
 	set_physics_process(false)
@@ -64,7 +73,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	var bullet: Bullet = area as Bullet
+	var bullet: BulletPlayer = area as BulletPlayer
 	if bullet:
 		bullet.queue_free()
 		damage(bullet.damage)
