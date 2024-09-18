@@ -11,7 +11,6 @@ var velocity: Vector2
 var knockback_velocity: Vector2 = Vector2.ZERO
 const KNOCKBACK_FRICTION: float = 2
 
-
 func _ready() -> void:
 	current_hp = hp
 	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
@@ -23,11 +22,20 @@ func _physics_process(delta: float) -> void:
 	for behavior: EnemyMoveBehavior in move_behaviors:
 		velocity += behavior.velocity
 	
+	var motion: Vector2 = velocity * delta
+	
 	rotation = velocity.angle()
 	
-	position += velocity * delta
+	position += motion
 	
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, delta * KNOCKBACK_FRICTION)
+	
+	# check collision with walls
+	# can rarely glitch out on concave edges
+	var raycast_result: Utils.RayCastResult = Utils.cast_ray(self, motion.normalized() * 8, 0b100)
+	if raycast_result:
+		var knockback: Vector2 = raycast_result.normal * 400
+		knockback_velocity += knockback
 
 
 func damage(amount: float) -> void:
