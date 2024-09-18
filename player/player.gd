@@ -42,8 +42,8 @@ func _physics_process(delta: float) -> void:
 	velocity = move_velocity + secondary_velocity
 	move_velocity = Vector2.ZERO
 	
-	var firerate_multiplier: float = 1 + 0.0075 * velocity.length()
-	shoot_timer += 2 * firerate_multiplier * delta
+	var additional_firerate: float = 0.0125 * velocity.length()
+	shoot_timer += (5 + additional_firerate) * delta
 	
 	# prevent jittering by only rotating at a min. velocity
 	if velocity.length() > VELOCITY_THRESHOLD:

@@ -25,17 +25,9 @@ func _physics_process(delta: float) -> void:
 	var motion: Vector2 = Vector2.RIGHT.rotated(rotation)
 	motion *= base_speed * speed_multiplier * delta
 	
-	var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
-	var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(
-		position,
-		position + motion,
-		0b100
-	)
-	var collision: Dictionary = space_state.intersect_ray(query)
-	if collision and "normal" in collision:
-		@warning_ignore("unsafe_cast") # Assume Vector2
-		var normal: Vector2 = collision.normal as Vector2
-		assert(normal != null)
+	var ray_cast_result: Utils.RayCastResult = Utils.cast_ray(self, motion, 0b100)
+	if ray_cast_result:
+		var normal: Vector2 = ray_cast_result.normal
 		var normal_angle: float = normal.angle() as float
 		rotation += 2 * (normal_angle - rotation) + PI
 	
