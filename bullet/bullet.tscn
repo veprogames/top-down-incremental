@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://bullet/bullet.gd" id="1_cnltb"]
 [ext_resource type="Texture2D" uid="uid://cpw7fba1o3fp" path="res://bullet/bullet.png" id="1_xjrlh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_536nn"]
-size = Vector2(9, 3)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hv4em"]
+radius = 6.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
@@ -15,6 +15,4 @@ script = ExtResource("1_cnltb")
 texture = ExtResource("1_xjrlh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_536nn")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+shape = SubResource("CircleShape2D_hv4em")

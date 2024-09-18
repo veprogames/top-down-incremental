@@ -12,12 +12,16 @@ var t: float = 0.0
 func _ready() -> void:
 	noise.frequency *= speed
 	noise.seed = randi()
-	
 
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+
+func _process(delta: float) -> void:
+	super._process(delta)
 	
 	t += delta
+
+
+func recalculate_velocity() -> void:
+	super.recalculate_velocity()
 	
 	velocity = Vector2(
 		noise.get_noise_1d(t),
