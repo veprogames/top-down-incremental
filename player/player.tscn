@@ -17,8 +17,7 @@ texture = ExtResource("1_gynj0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qfxhs")
 
-[node name="BulletPodPlayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_tc3r6")]
-player = NodePath("..")
+[node name="BulletPodPlayer" parent="." instance=ExtResource("3_tc3r6")]
 
 [connection signal="died" from="." to="." method="_on_died"]
 [connection signal="took_damage" from="." to="." method="_on_took_damage"]
