@@ -16,10 +16,8 @@ texture = ExtResource("2_tydix")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_1cno8")
 
-[node name="EnemyMoveBehaviorNoise" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("4_drd8a")]
+[node name="EnemyMoveBehaviorNoise" parent="." index="3" instance=ExtResource("4_drd8a")]
 amplitude = 75.0
-enemy = NodePath("..")
 
-[node name="EnemyMoveBehaviorChase" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("5_ubgwu")]
+[node name="EnemyMoveBehaviorChase" parent="." index="4" instance=ExtResource("5_ubgwu")]
 speed = 60.0
-enemy = NodePath("..")

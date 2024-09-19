@@ -3,13 +3,14 @@ extends BulletPod
 
 signal timeout(bullet: BulletEnemy)
 
-@export var enemy: Enemy
 @export var firerate: float
 
+@onready var enemy: Enemy = owner as Enemy
 @onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
+	assert(enemy != null)
 	assert(firerate > 0)
 	timer.wait_time = 1 / firerate
 

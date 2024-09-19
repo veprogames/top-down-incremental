@@ -1,7 +1,11 @@
 class_name BulletPodPlayer
 extends BulletPod
 
-@export var player: Player
+@onready var player: Player = owner as Player
+
+
+func _ready() -> void:
+	assert(player != null)
 
 
 func create_bullet() -> BulletPlayer:

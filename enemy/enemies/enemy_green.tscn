@@ -18,10 +18,8 @@ texture = ExtResource("2_nkbcx")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_gt3h4")
 
-[node name="BulletPodEnemy" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("3_ilo8o")]
+[node name="BulletPodEnemy" parent="." index="3" instance=ExtResource("3_ilo8o")]
 position = Vector2(17, 0)
-enemy = NodePath("..")
 firerate = 0.1
 
-[node name="EnemyMoveBehaviorChase" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("4_85ptm")]
-enemy = NodePath("..")
+[node name="EnemyMoveBehaviorChase" parent="." index="4" instance=ExtResource("4_85ptm")]

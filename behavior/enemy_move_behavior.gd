@@ -1,12 +1,16 @@
 class_name EnemyMoveBehavior
 extends BaseBehavior
 
-@export var enemy: Enemy
+@onready var enemy: Enemy = owner as Enemy
 
 var velocity: Vector2
 
 ## framerate dependent (for ease) recalculate counter
 var refresh_counter: int = 0
+
+
+func _ready() -> void:
+	assert(enemy != null)
 
 
 func _process(_delta: float) -> void:

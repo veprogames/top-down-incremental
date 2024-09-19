@@ -19,11 +19,9 @@ texture = ExtResource("2_wybay")
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_qvgtv")
 
-[node name="EnemyMoveBehaviorChase" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("3_b37jo")]
+[node name="EnemyMoveBehaviorChase" parent="." index="3" instance=ExtResource("3_b37jo")]
 speed = 130.0
-enemy = NodePath("..")
 
-[node name="EnemyMoveBehaviorNoise" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("4_g2qsu")]
+[node name="EnemyMoveBehaviorNoise" parent="." index="4" instance=ExtResource("4_g2qsu")]
 speed = 2.0
 amplitude = 60.0
-enemy = NodePath("..")

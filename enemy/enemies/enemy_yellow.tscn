@@ -19,11 +19,9 @@ texture = ExtResource("2_bg0i7")
 rotation = 0.785398
 shape = SubResource("CircleShape2D_hne64")
 
-[node name="EnemyMoveBehaviorChase" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("3_hj8bl")]
+[node name="EnemyMoveBehaviorChase" parent="." index="3" instance=ExtResource("3_hj8bl")]
 speed = 115.0
-enemy = NodePath("..")
 
-[node name="EnemyMoveBehaviorNoise" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("4_q5a64")]
+[node name="EnemyMoveBehaviorNoise" parent="." index="4" instance=ExtResource("4_q5a64")]
 speed = 2.0
 amplitude = 200.0
-enemy = NodePath("..")
