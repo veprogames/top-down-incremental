@@ -22,6 +22,8 @@ var invincibility_timer: float = 0.0
 
 var hp: int = 10
 
+var target_enemy: Enemy
+
 @export var player_damage: PlayerDamage
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
@@ -67,17 +69,25 @@ func _physics_process(delta: float) -> void:
 	invincibility_timer = maxf(0.0, invincibility_timer - delta)
 
 
-func get_shoot_angle() -> float:
+func get_target_enemy() -> Enemy:
 	for i: int in shape_cast_2d.get_collision_count():
 		var enemy: Enemy = shape_cast_2d.get_collider(i) as Enemy
 		if enemy:
-			return (enemy.position - position).angle()
+			return enemy
+	return null
+
+
+func get_shoot_angle() -> float:
+	if is_instance_valid(target_enemy):
+		return (target_enemy.global_position - global_position).angle()
 	return 0.0
 
 
 func shoot() -> void:
+	target_enemy = get_target_enemy()
 	var bullet: BulletPlayer = bullet_pod_player.create_bullet()
 	bullet.rotation = get_shoot_angle()
+	bullet.target_enemy = target_enemy
 	owner.add_child(bullet)
 
 

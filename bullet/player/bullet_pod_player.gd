@@ -11,5 +11,5 @@ func _ready() -> void:
 func create_bullet() -> BulletPlayer:
 	var bullet: BulletPlayer = super.create_bullet() as BulletPlayer
 	bullet.damage = player.player_damage.get_damage()
-	bullet.base_speed = player.velocity.length() + 100
+	bullet.base_speed = player.velocity.length() * 0.25 + 100
 	return bullet
