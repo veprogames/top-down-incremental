@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://esy43au0ossc"]
+[gd_scene load_steps=6 format=3 uid="uid://esy43au0ossc"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_ogybm"]
 [ext_resource type="Texture2D" uid="uid://dvb0opui13ir1" path="res://enemy/enemies/enemy_green.png" id="2_nkbcx"]
 [ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="3_ilo8o"]
+[ext_resource type="PackedScene" uid="uid://3h6i1t8cbtp" path="res://behavior/enemy_move_behavior_chase.tscn" id="4_85ptm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gt3h4"]
 radius = 24.0
@@ -21,3 +22,6 @@ shape = SubResource("CircleShape2D_gt3h4")
 position = Vector2(17, 0)
 enemy = NodePath("..")
 firerate = 0.1
+
+[node name="EnemyMoveBehaviorChase" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("4_85ptm")]
+enemy = NodePath("..")

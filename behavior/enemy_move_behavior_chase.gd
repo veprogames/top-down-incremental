@@ -19,3 +19,9 @@ func recalculate_velocity() -> void:
 		velocity = (player.position - enemy.position).normalized() * speed
 	else:
 		velocity = Vector2.ZERO
+
+
+func mutate() -> void:
+	super.mutate()
+	
+	speed *= randf_range(0.6, 1 / 0.6)

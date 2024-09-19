@@ -18,3 +18,7 @@ func _process(_delta: float) -> void:
 
 func recalculate_velocity() -> void:
 	pass
+
+
+func mutate() -> void:
+	super.mutate()

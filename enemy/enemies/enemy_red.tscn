@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d31pk84rjgunr"]
+[gd_scene load_steps=6 format=3 uid="uid://d31pk84rjgunr"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_k4h7d"]
 [ext_resource type="Texture2D" uid="uid://fh1o0uq1jl33" path="res://enemy/enemies/enemy_red.png" id="2_tydix"]
-[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="3_iqlbc"]
+[ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="4_drd8a"]
+[ext_resource type="PackedScene" uid="uid://3h6i1t8cbtp" path="res://behavior/enemy_move_behavior_chase.tscn" id="5_ubgwu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cno8"]
 radius = 9.0
@@ -15,6 +16,10 @@ texture = ExtResource("2_tydix")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_1cno8")
 
-[node name="BulletPodEnemy" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("3_iqlbc")]
+[node name="EnemyMoveBehaviorNoise" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("4_drd8a")]
+amplitude = 75.0
 enemy = NodePath("..")
-firerate = 1.0
+
+[node name="EnemyMoveBehaviorChase" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("5_ubgwu")]
+speed = 60.0
+enemy = NodePath("..")

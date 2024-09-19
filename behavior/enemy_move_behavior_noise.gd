@@ -27,3 +27,10 @@ func recalculate_velocity() -> void:
 		noise.get_noise_1d(t),
 		noise.get_noise_1d(t + 1000)
 	) * amplitude
+
+
+func mutate() -> void:
+	super.mutate()
+	
+	speed *= randf_range(0.6, 1 / 0.6)
+	amplitude *= randf_range(0.6, 1 / 0.6)

@@ -16,6 +16,9 @@ func _ready() -> void:
 	current_hp = hp
 	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
 	
+	for behavior: EnemyMoveBehavior in move_behaviors:
+		behavior.mutate()
+	
 	for pod: BulletPodEnemy in Utils.get_children_of_type(self, BulletPod):
 		pod.timeout.connect(shoot)
 
