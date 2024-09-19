@@ -20,6 +20,7 @@ shape = SubResource("CircleShape2D_gt3h4")
 
 [node name="BulletPodEnemy" parent="." index="3" instance=ExtResource("3_ilo8o")]
 position = Vector2(17, 0)
-firerate = 0.1
+firerate = 0.2
 
 [node name="EnemyMoveBehaviorChase" parent="." index="4" instance=ExtResource("4_85ptm")]
+speed = 160.0

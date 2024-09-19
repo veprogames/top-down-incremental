@@ -17,7 +17,7 @@ texture = ExtResource("2_tydix")
 shape = SubResource("CircleShape2D_1cno8")
 
 [node name="EnemyMoveBehaviorNoise" parent="." index="3" instance=ExtResource("4_drd8a")]
-amplitude = 75.0
+amplitude = 125.0
 
 [node name="EnemyMoveBehaviorChase" parent="." index="4" instance=ExtResource("5_ubgwu")]
-speed = 60.0
+speed = 90.0
