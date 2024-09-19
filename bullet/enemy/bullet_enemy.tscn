@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt4vddklvsmgm"]
+[gd_scene load_steps=8 format=3 uid="uid://bt4vddklvsmgm"]
 
 [ext_resource type="PackedScene" uid="uid://jd8o7mwcbif0" path="res://bullet/bullet.tscn" id="1_1xy7o"]
 [ext_resource type="Texture2D" uid="uid://b204ep1hunuub" path="res://bullet/enemy/bullet_enemy.png" id="2_bvs3k"]
@@ -26,6 +26,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhroh"]
+radius = 1.0
+
 [node name="BulletEnemy" instance=ExtResource("1_1xy7o")]
 collision_mask = 5
 script = ExtResource("2_mefsr")
@@ -34,5 +37,8 @@ script = ExtResource("2_mefsr")
 sprite_frames = SubResource("SpriteFrames_acpoq")
 autoplay = "default"
 frame_progress = 0.19735
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bhroh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
