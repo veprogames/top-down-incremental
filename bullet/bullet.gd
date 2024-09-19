@@ -2,7 +2,7 @@ class_name Bullet
 extends Area2D
 
 const SPEED_MULTIPLIER_BASE: float = 1.5
-const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
+@export var speed_multiplier_acceleration: float = 0.0
 
 @export var base_speed: float = 0.0
 var speed_multiplier: float = SPEED_MULTIPLIER_BASE
@@ -10,11 +10,10 @@ var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 const MAX_TRAVEL_DISTANCE: float = 600.0
 var travelled: float = 0.0
 
-@onready var sprite: Sprite2D = $Sprite
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
 
 
 func _process(_delta: float) -> void:
-	sprite.modulate.a = min(1.0, 2.0 * (1.0 - travelled))
 	if travelled >= 1.0:
 		queue_free()
 
@@ -31,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	position += motion
 	travelled += motion.length() / MAX_TRAVEL_DISTANCE
 	
-	speed_multiplier += SPEED_MULTIPLIER_ACCELERATION * delta
+	speed_multiplier += speed_multiplier_acceleration * delta
 
 
 func get_velocity() -> Vector2:

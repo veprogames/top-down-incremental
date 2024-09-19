@@ -79,7 +79,4 @@ polygon = PackedVector2Array(1145, -41, 921, 159, 1280, 263, 1147, 449, 1332, 59
 polygon = PackedVector2Array(1281, 258, 1139, 454, 1333, 596, 977, 880, 1367, 972, 1983, 864, 1965, 514, 1727, 600, 2007, 212, 1639, 254, 1143, -46, 923, 158)
 
 [node name="Spawner" parent="." instance=ExtResource("4_gancj")]
-position = Vector2(793, 482)
-
-[node name="Spawner2" parent="." instance=ExtResource("4_gancj")]
-position = Vector2(667, 321)
+position = Vector2(735, 437)

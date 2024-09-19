@@ -50,7 +50,6 @@ func damage(amount: float) -> void:
 
 
 func shoot(bullet: BulletEnemy) -> void:
-	print(owner)
 	get_tree().current_scene.add_child(bullet)
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d31pk84rjgunr"]
+[gd_scene load_steps=5 format=3 uid="uid://d31pk84rjgunr"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_k4h7d"]
 [ext_resource type="Texture2D" uid="uid://fh1o0uq1jl33" path="res://enemy/enemies/enemy_red.png" id="2_tydix"]
+[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="3_iqlbc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cno8"]
 radius = 9.0
@@ -13,3 +14,7 @@ texture = ExtResource("2_tydix")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_1cno8")
+
+[node name="BulletPodEnemy" parent="." index="3" node_paths=PackedStringArray("enemy") instance=ExtResource("3_iqlbc")]
+enemy = NodePath("..")
+firerate = 1.0
