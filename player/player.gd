@@ -25,6 +25,8 @@ var hp: int = 10
 @export var player_damage: PlayerDamage
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -65,8 +67,18 @@ func _physics_process(delta: float) -> void:
 	invincibility_timer = maxf(0.0, invincibility_timer - delta)
 
 
+func get_shoot_angle() -> float:
+	for i: int in shape_cast_2d.get_collision_count():
+		var enemy: Enemy = shape_cast_2d.get_collider(i) as Enemy
+		if enemy:
+			return (enemy.position - position).angle()
+	return 0.0
+
+
 func shoot() -> void:
-	owner.add_child(bullet_pod_player.create_bullet())
+	var bullet: BulletPlayer = bullet_pod_player.create_bullet()
+	bullet.rotation = get_shoot_angle()
+	owner.add_child(bullet)
 
 
 func try_knock(vec: Vector2) -> void:
