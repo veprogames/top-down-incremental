@@ -3,6 +3,9 @@ extends Area2D
 
 @export var hp: float = 1
 @export var color: Color = Color.RED
+
+@onready var level: Level = get_tree().current_scene as Level
+
 var current_hp: float
 
 var move_behaviors: Array[EnemyMoveBehavior]
@@ -13,6 +16,8 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 const KNOCKBACK_FRICTION: float = 2
 
 func _ready() -> void:
+	assert(is_instance_valid(level))
+	
 	current_hp = hp
 	move_behaviors.assign(Utils.get_children_of_type(self, EnemyMoveBehavior))
 	
@@ -68,7 +73,7 @@ func spawn_gems() -> void:
 		
 		var gem: Gem = Gem.create_with_velocity(color, vel)
 		gem.position = global_position
-		get_tree().current_scene.add_child(gem)
+		level.add_gem(gem)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

@@ -84,6 +84,11 @@ offset_right = 0.0
 offset_bottom = 73.0
 grow_horizontal = 2
 
+[node name="LabelFPS" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 37.0
+text = "FPS"
+
 [node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
 z_index = 1
 position = Vector2(634, 481)
@@ -129,3 +134,7 @@ collision_mask = 9
 shape = SubResource("WorldBoundaryShape2D_u1xbg")
 
 [node name="LevelSpawner" parent="." instance=ExtResource("7_geyi5")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Gems" type="Node2D" parent="."]
