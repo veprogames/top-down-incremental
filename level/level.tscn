@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=16 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="1_3sncf"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_08xo1"]
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
 [ext_resource type="PackedScene" uid="uid://yam6ts6l84j0" path="res://player/ui/player_damage_display.tscn" id="1_sr8ao"]
 [ext_resource type="Texture2D" uid="uid://ki05rasve8x" path="res://level/tiles/water.png" id="3_5xm1u"]
+[ext_resource type="Texture2D" uid="uid://bg4cey1lk6jk0" path="res://level/tiles/sand.png" id="3_r522a"]
 [ext_resource type="PackedScene" uid="uid://gbdae67q3h10" path="res://player/player_camera.tscn" id="3_wppie"]
 [ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
 [ext_resource type="PackedScene" uid="uid://cfb3ump5ftuba" path="res://player/ui/player_health_bar.tscn" id="5_614nh"]
@@ -25,18 +26,23 @@ normal = Vector2(0, 1)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_08xo1")
 
-[node name="Grass" type="Sprite2D" parent="."]
-texture_repeat = 2
-texture = ExtResource("1_3sncf")
-region_enabled = true
-region_rect = Rect2(0, 0, 2000, 2000)
-
 [node name="Water" type="Sprite2D" parent="."]
-z_index = -1
 texture_repeat = 2
 texture = ExtResource("3_5xm1u")
 region_enabled = true
 region_rect = Rect2(0, 0, 3000, 3000)
+
+[node name="Sand" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("3_r522a")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_3sncf")
+region_enabled = true
+region_rect = Rect2(0, 0, 1950, 1950)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -89,11 +95,6 @@ offset_right = 40.0
 offset_bottom = 37.0
 text = "FPS"
 
-[node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
-z_index = 1
-position = Vector2(634, 481)
-player_damage = NodePath("../PlayerDamage")
-
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wppie")]
 position = Vector2(634, 481)
 
@@ -135,6 +136,11 @@ shape = SubResource("WorldBoundaryShape2D_u1xbg")
 
 [node name="LevelSpawner" parent="." instance=ExtResource("7_geyi5")]
 
+[node name="Gems" type="Node2D" parent="."]
+
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Gems" type="Node2D" parent="."]
+[node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
+z_index = 1
+position = Vector2(634, 481)
+player_damage = NodePath("../PlayerDamage")
