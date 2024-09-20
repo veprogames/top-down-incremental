@@ -6,6 +6,8 @@ static var Enemies: Array[PackedScene] = [
 	preload("res://enemy/enemies/enemy_orange.tscn"),
 	preload("res://enemy/enemies/enemy_yellow.tscn"),
 	preload("res://enemy/enemies/enemy_green.tscn"),
+	preload("res://enemy/enemies/enemy_cyan.tscn"),
+	preload("res://enemy/enemies/enemy_blue.tscn"),
 ]
 
 

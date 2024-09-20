@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd0viepvu385v"]
+
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_2th5u"]
+[ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="2_k0hjg"]
+[ext_resource type="Texture2D" uid="uid://cpxfqdnx7fv5u" path="res://enemy/enemies/enemy_blue.png" id="2_wa38a"]
+[ext_resource type="PackedScene" uid="uid://3h6i1t8cbtp" path="res://behavior/enemy_move_behavior_chase.tscn" id="3_uu0y1"]
+[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="5_1u1cf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg83i"]
+radius = 32.0
+
+[node name="EnemyBlue" instance=ExtResource("1_2th5u")]
+hp = 30000.0
+color = Color(0, 0.25098, 1, 1)
+
+[node name="EnemyMoveBehaviorNoise" parent="." index="0" instance=ExtResource("2_k0hjg")]
+speed = 4.0
+
+[node name="EnemyMoveBehaviorChase" parent="." index="1" instance=ExtResource("3_uu0y1")]
+speed = 225.0
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("2_wa38a")
+
+[node name="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_hg83i")
+
+[node name="BulletPodEnemy" parent="." index="5" instance=ExtResource("5_1u1cf")]
+firerate = 0.25

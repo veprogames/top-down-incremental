@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://unrmbmnalxla"]
+
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_2dewm"]
+[ext_resource type="Texture2D" uid="uid://bip8h5452npt1" path="res://enemy/enemies/enemy_cyan.png" id="2_k6xf7"]
+[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="3_hmtwx"]
+[ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="4_uvbrx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhqps"]
+radius = 26.0
+
+[node name="EnemyCyan" instance=ExtResource("1_2dewm")]
+hp = 8000.0
+color = Color(0, 1, 1, 1)
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_k6xf7")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_fhqps")
+
+[node name="BulletPodEnemy" parent="." index="3" instance=ExtResource("3_hmtwx")]
+position = Vector2(16, 0)
+firerate = 0.1
+
+[node name="BulletPodEnemy2" parent="." index="4" instance=ExtResource("3_hmtwx")]
+position = Vector2(0, -16)
+rotation = -1.57079
+firerate = 0.1
+
+[node name="BulletPodEnemy3" parent="." index="5" instance=ExtResource("3_hmtwx")]
+position = Vector2(-16, 0)
+rotation = -3.14159
+firerate = 0.1
+
+[node name="BulletPodEnemy4" parent="." index="6" instance=ExtResource("3_hmtwx")]
+position = Vector2(0, 16)
+rotation = 1.57079
+firerate = 0.1
+
+[node name="EnemyMoveBehaviorNoise" parent="." index="7" instance=ExtResource("4_uvbrx")]
+speed = 0.5
+amplitude = 350.0
