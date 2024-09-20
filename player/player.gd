@@ -80,7 +80,7 @@ func get_target_enemy() -> Enemy:
 func get_shoot_angle() -> float:
 	if is_instance_valid(target_enemy):
 		return (target_enemy.global_position - global_position).angle()
-	return 0.0
+	return rotation
 
 
 func shoot() -> void:
