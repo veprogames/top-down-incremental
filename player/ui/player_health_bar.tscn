@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfb3ump5ftuba"]
+
+[ext_resource type="Script" path="res://player/ui/player_health_bar.gd" id="1_ui3ln"]
+
+[node name="PlayerHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ui3ln")

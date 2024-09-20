@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=15 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="1_3sncf"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_08xo1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ki05rasve8x" path="res://level/tiles/water.png" id="3_5xm1u"]
 [ext_resource type="PackedScene" uid="uid://gbdae67q3h10" path="res://player/player_camera.tscn" id="3_wppie"]
 [ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
+[ext_resource type="PackedScene" uid="uid://cfb3ump5ftuba" path="res://player/ui/player_health_bar.tscn" id="5_614nh"]
+[ext_resource type="PackedScene" uid="uid://b23dh2uhv8tvh" path="res://level/ui/level_time.tscn" id="6_u8prs"]
 [ext_resource type="PackedScene" uid="uid://brn8qtcwgwwuq" path="res://spawner/level_spawner.tscn" id="7_geyi5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vjv4r"]
@@ -38,8 +40,34 @@ region_rect = Rect2(0, 0, 3000, 3000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerDamageDisplay" parent="CanvasLayer" node_paths=PackedStringArray("player_damage") instance=ExtResource("1_sr8ao")]
-player_damage = NodePath("../../PlayerDamage")
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="PlayerDamageDisplay" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("player_damage") instance=ExtResource("1_sr8ao")]
+layout_mode = 2
+player_damage = NodePath("../../../PlayerDamage")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(640, 72)
+layout_mode = 2
+
+[node name="PlayerHealthBar" parent="CanvasLayer/HBoxContainer/CenterContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_614nh")]
+layout_mode = 2
+player = NodePath("../../../../Player")
+
+[node name="LevelTime" parent="CanvasLayer" instance=ExtResource("6_u8prs")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+grow_horizontal = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
 z_index = 1

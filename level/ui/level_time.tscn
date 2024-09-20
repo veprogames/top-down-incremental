@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b23dh2uhv8tvh"]
+
+[ext_resource type="Script" path="res://level/ui/level_time.gd" id="1_6p6hj"]
+
+[node name="LevelTime" type="Label"]
+offset_right = 40.0
+offset_bottom = 37.0
+theme_type_variation = &"LabelLarge"
+horizontal_alignment = 1
+script = ExtResource("1_6p6hj")

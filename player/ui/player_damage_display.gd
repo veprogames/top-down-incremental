@@ -1,10 +1,10 @@
 class_name PlayerDamageDisplay
-extends Control
+extends HBoxContainer
 
 @export var player_damage: PlayerDamage
 
-@onready var label_total_damage: Label = $HBoxContainer/LabelTotalDamage
-@onready var h_box_damages: HBoxContainer = $HBoxContainer/HBoxDamages
+@onready var label_total_damage: Label = $LabelTotalDamage
+@onready var h_flow_container_damages: HFlowContainer = $HFlowContainerDamages
 
 
 func _ready() -> void:
@@ -18,13 +18,13 @@ func update() -> void:
 	
 	for key: String in player_damage._map:
 		var label: Label
-		if not h_box_damages.has_node(key):
+		if not h_flow_container_damages.has_node(key):
 			label = Label.new()
 			label.name = key
 			label.modulate = Color.from_string(key, Color.WHITE)
-			h_box_damages.add_child(label)
+			h_flow_container_damages.add_child(label)
 		else:
-			label = h_box_damages.get_node(key) as Label
+			label = h_flow_container_damages.get_node(key) as Label
 		label.text = "x%.2f" % player_damage._map[key]
 
 
