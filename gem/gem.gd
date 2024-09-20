@@ -5,6 +5,8 @@ static var GemScene: PackedScene = preload("res://gem/gem.tscn")
 
 const FRICTION: float = 3
 
+const COLLISION_LAYER_MAGNET: int = 0b10_0000
+
 var velocity: Vector2 = Vector2.ZERO
 
 ## attracted by this node
@@ -48,10 +50,10 @@ static func create_with_velocity(col: Color, vel: Vector2) -> Gem:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.collision_layer & 0b100000:
+	if area.collision_layer & COLLISION_LAYER_MAGNET:
 		magnet = area
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.collision_layer & 0b100000:
+	if area.collision_layer & COLLISION_LAYER_MAGNET:
 		magnet = null
