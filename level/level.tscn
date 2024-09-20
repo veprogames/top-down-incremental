@@ -94,8 +94,8 @@ z_index = 1
 position = Vector2(634, 481)
 player_damage = NodePath("../PlayerDamage")
 
-[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("3_wppie")]
-player = NodePath("..")
+[node name="PlayerCamera" parent="." instance=ExtResource("3_wppie")]
+position = Vector2(634, 481)
 
 [node name="PlayerDamage" parent="." instance=ExtResource("3_xo2ng")]
 
