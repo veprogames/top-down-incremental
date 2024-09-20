@@ -92,6 +92,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	var bullet: BulletPlayer = area as BulletPlayer
 	if bullet:
-		knockback_velocity += bullet.get_velocity().normalized() * 50
+		knockback_velocity += bullet.get_velocity().normalized() * 100
 		bullet.queue_free()
 		damage(bullet.damage)
