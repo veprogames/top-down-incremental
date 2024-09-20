@@ -7,3 +7,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if player:
 		var knockback_velocity: Vector2 = get_velocity().normalized() * 300
 		player.try_knock(knockback_velocity)
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

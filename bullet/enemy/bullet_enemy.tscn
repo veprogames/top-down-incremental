@@ -31,6 +31,8 @@ radius = 1.0
 
 [node name="BulletEnemy" instance=ExtResource("1_1xy7o")]
 collision_mask = 5
+input_pickable = false
+monitorable = false
 script = ExtResource("2_mefsr")
 
 [node name="AnimatedSprite" parent="." index="0"]
@@ -41,4 +43,10 @@ frame_progress = 0.19735
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_bhroh")
 
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
