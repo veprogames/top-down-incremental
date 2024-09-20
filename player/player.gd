@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal took_damage
 signal died
+@warning_ignore("unused_signal") # used for _on_gem_collected
+signal gem_collected(color: Color)
 
 var BulletScene: PackedScene = preload("res://bullet/bullet.tscn")
 
@@ -111,3 +113,8 @@ func _on_took_damage() -> void:
 
 func _on_died() -> void:
 	queue_free()
+
+
+func _on_gem_collected(color: Color) -> void:
+	var html: String = color.to_html()
+	player_damage.add_multiplier(html, 0.002)

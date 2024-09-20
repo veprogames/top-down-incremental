@@ -50,10 +50,25 @@ func damage(amount: float) -> void:
 	if current_hp <= 0:
 		Events.enemy_died.emit(self)
 		queue_free()
+		spawn_gems.call_deferred()
 
 
 func shoot(bullet: BulletEnemy) -> void:
 	get_tree().current_scene.add_child(bullet)
+
+
+func spawn_gems() -> void:
+	var count: int = randi_range(4, 8)
+	for i: int in count:
+		var v: Vector2 = velocity - knockback_velocity
+		var vel: Vector2 = v.normalized() * randf_range(30, 70)
+		vel += v * randf_range(0.5, 1.5)
+		vel *= -1
+		vel = vel.rotated(randf_range(-PI / 6, PI / 6))
+		
+		var gem: Gem = Gem.create_with_velocity(color, vel)
+		gem.position = global_position
+		get_tree().current_scene.add_child(gem)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

@@ -7,10 +7,6 @@ var _map: Dictionary = {}
 var _damage: float = 10.0
 
 
-func _ready() -> void:
-	Events.enemy_died.connect(_on_global_enemy_died)
-
-
 func get_damage() -> float:
 	return _damage
 
@@ -34,8 +30,3 @@ func add_multiplier(color: String, add: float) -> void:
 	assert(_map[color] is float)
 	@warning_ignore("unsafe_cast")
 	set_multiplier(color, (_map[color] as float) + add)
-
-
-func _on_global_enemy_died(enemy: Enemy) -> void:
-	var html: String = enemy.color.to_html()
-	add_multiplier(html, 0.01)

@@ -10,7 +10,8 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	var tier: int = EnemyFactory.get_random_tier(level.time)
-	var enemy: Enemy = EnemyFactory.create_random(tier)
-	enemy.position = player.position + 500 * Vector2.RIGHT.rotated(randf() * TAU)
-	level.add_child(enemy)
+	if is_instance_valid(player):
+		var tier: int = EnemyFactory.get_random_tier(level.time)
+		var enemy: Enemy = EnemyFactory.create_random(tier)
+		enemy.position = player.position + 500 * Vector2.RIGHT.rotated(randf() * TAU)
+		level.add_child(enemy)
