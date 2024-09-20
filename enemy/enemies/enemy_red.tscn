@@ -9,6 +9,7 @@
 radius = 9.0
 
 [node name="EnemyRed" instance=ExtResource("1_k4h7d")]
+hp = 50.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_tydix")

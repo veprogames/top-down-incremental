@@ -9,7 +9,7 @@
 radius = 16.0
 
 [node name="EnemyOrange" instance=ExtResource("1_h3aar")]
-hp = 5.0
+hp = 150.0
 color = Color(1, 0.501961, 0, 1)
 
 [node name="Sprite" parent="." index="0"]

@@ -4,7 +4,7 @@ extends Node
 signal damage_part_changed(key: String, value: float)
 
 var _map: Dictionary = {}
-var _damage: float = 1.0
+var _damage: float = 10.0
 
 
 func _ready() -> void:
@@ -16,10 +16,10 @@ func get_damage() -> float:
 
 
 func _calc_damage() -> void:
-	var dmg: float = 1.0
+	var dmg: float = 10.0
 	for v: float in _map.values():
 		dmg *= v
-	_damage = dmg
+	_damage = floorf(dmg)
 
 
 func set_multiplier(color: String, multiplier: float) -> void:
