@@ -22,7 +22,8 @@ var shoot_timer: float = 0.0
 
 var invincibility_timer: float = 0.0
 
-var hp: int = 10
+var max_hp: int = 20
+var hp: int
 
 var target_enemy: Enemy
 
@@ -33,6 +34,8 @@ var target_enemy: Enemy
 
 
 func _ready() -> void:
+	hp = max_hp
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
