@@ -11,7 +11,7 @@ static var Enemies: Array[PackedScene] = [
 
 static func get_random_tier(level_time: float) -> int:
 	var bias: float = clampf(-log(randf()) / log(5), 0, 3)
-	var tier: int = int(level_time / 120 + bias) - 1
+	var tier: int = int(level_time / 120 + bias - 0.5)
 	return clampi(tier, 0, Enemies.size() - 1)
 
 

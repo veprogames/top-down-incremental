@@ -40,7 +40,20 @@ region_rect = Rect2(0, 0, 3000, 3000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -51,22 +64,24 @@ grow_vertical = 0
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="PlayerDamageDisplay" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("player_damage") instance=ExtResource("1_sr8ao")]
+[node name="PlayerDamageDisplay" parent="CanvasLayer/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("player_damage") instance=ExtResource("1_sr8ao")]
 layout_mode = 2
-player_damage = NodePath("../../../PlayerDamage")
+player_damage = NodePath("../../../../../PlayerDamage")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(640, 72)
 layout_mode = 2
 
-[node name="PlayerHealthBar" parent="CanvasLayer/HBoxContainer/CenterContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_614nh")]
+[node name="PlayerHealthBar" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/CenterContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_614nh")]
 layout_mode = 2
-player = NodePath("../../../../Player")
+player = NodePath("../../../../../../Player")
 
-[node name="LevelTime" parent="CanvasLayer" instance=ExtResource("6_u8prs")]
+[node name="LevelTime" parent="CanvasLayer/MarginContainer/Control" instance=ExtResource("6_u8prs")]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = 0.0
+offset_bottom = 73.0
 grow_horizontal = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]

@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	var motion: Vector2 = velocity * delta
 	
-	rotation = velocity.angle()
+	rotation = (velocity - knockback_velocity).angle()
 	
 	position += motion
 	
@@ -77,5 +77,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	var bullet: BulletPlayer = area as BulletPlayer
 	if bullet:
+		knockback_velocity += bullet.get_velocity().normalized() * 50
 		bullet.queue_free()
 		damage(bullet.damage)

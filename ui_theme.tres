@@ -17,3 +17,7 @@ LabelLarge/constants/outline_size = 20
 LabelLarge/constants/shadow_offset_x = 6
 LabelLarge/constants/shadow_offset_y = 6
 LabelLarge/font_sizes/font_size = 72
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
