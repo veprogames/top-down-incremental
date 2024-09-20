@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=13 format=3 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="1_3sncf"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_08xo1"]
 [ext_resource type="PackedScene" uid="uid://oyiycif2f18h" path="res://player/player.tscn" id="1_c1fdt"]
 [ext_resource type="PackedScene" uid="uid://yam6ts6l84j0" path="res://player/ui/player_damage_display.tscn" id="1_sr8ao"]
+[ext_resource type="Texture2D" uid="uid://ki05rasve8x" path="res://level/tiles/water.png" id="3_5xm1u"]
 [ext_resource type="PackedScene" uid="uid://gbdae67q3h10" path="res://player/player_camera.tscn" id="3_wppie"]
 [ext_resource type="PackedScene" uid="uid://dc8blsf65d7qp" path="res://player/player_damage.tscn" id="3_xo2ng"]
-[ext_resource type="PackedScene" uid="uid://bxqjtbspu7034" path="res://spawner/spawner.tscn" id="4_gancj"]
+[ext_resource type="PackedScene" uid="uid://brn8qtcwgwwuq" path="res://spawner/level_spawner.tscn" id="7_geyi5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vjv4r"]
 normal = Vector2(1, 0)
@@ -19,12 +21,20 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u1xbg"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_08xo1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Grass" type="Sprite2D" parent="."]
 texture_repeat = 2
 texture = ExtResource("1_3sncf")
 region_enabled = true
-region_rect = Rect2(0, 0, 14000, 14000)
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="Water" type="Sprite2D" parent="."]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("3_5xm1u")
+region_enabled = true
+region_rect = Rect2(0, 0, 3000, 3000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -41,13 +51,10 @@ player = NodePath("..")
 
 [node name="PlayerDamage" parent="." instance=ExtResource("3_xo2ng")]
 
-[node name="Spawner" parent="." instance=ExtResource("4_gancj")]
-position = Vector2(735, 437)
-
 [node name="Border" type="Node2D" parent="."]
 
 [node name="Left" type="StaticBody2D" parent="Border"]
-position = Vector2(-5000, 0)
+position = Vector2(-1000, 0)
 collision_layer = 4
 collision_mask = 9
 
@@ -55,7 +62,7 @@ collision_mask = 9
 shape = SubResource("WorldBoundaryShape2D_vjv4r")
 
 [node name="Right" type="StaticBody2D" parent="Border"]
-position = Vector2(5000, 0)
+position = Vector2(1000, 0)
 collision_layer = 4
 collision_mask = 9
 
@@ -63,7 +70,7 @@ collision_mask = 9
 shape = SubResource("WorldBoundaryShape2D_pa783")
 
 [node name="Top" type="StaticBody2D" parent="Border"]
-position = Vector2(0, -5000)
+position = Vector2(0, -1000)
 collision_layer = 4
 collision_mask = 9
 
@@ -71,9 +78,11 @@ collision_mask = 9
 shape = SubResource("WorldBoundaryShape2D_wudsr")
 
 [node name="Bottom" type="StaticBody2D" parent="Border"]
-position = Vector2(0, 5000)
+position = Vector2(0, 1000)
 collision_layer = 4
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Bottom"]
 shape = SubResource("WorldBoundaryShape2D_u1xbg")
+
+[node name="LevelSpawner" parent="." instance=ExtResource("7_geyi5")]
