@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvo27dq1r1rt3"]
+
+[ext_resource type="PackedScene" uid="uid://dhqwb1lmxih46" path="res://highscore/ui_highscore_list.tscn" id="1_kx6rw"]
+[ext_resource type="Script" path="res://level/ui/game_over_screen.gd" id="1_njq8l"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_njq8l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 1064.0
+mouse_filter = 2
+
+[node name="UIHighscoreList" parent="Control" instance=ExtResource("1_kx6rw")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_right = 0.5
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -45.0
+offset_right = 205.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonRestart" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="ButtonMenu" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/HBoxContainer/ButtonRestart" to="." method="_on_button_restart_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonMenu" to="." method="_on_button_menu_pressed"]

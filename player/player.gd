@@ -35,8 +35,6 @@ var target_enemy: Enemy
 
 func _ready() -> void:
 	hp = max_hp
-	
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _unhandled_input(event: InputEvent) -> void:

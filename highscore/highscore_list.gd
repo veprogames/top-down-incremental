@@ -1,6 +1,9 @@
 class_name HighscoreList
 extends Resource
 
+signal entry_added(index: int, entry: HighscoreEntry)
+
+
 @export var entries: Array[HighscoreEntry]
 
 
@@ -13,4 +16,8 @@ func add_entry(entry: HighscoreEntry) -> void:
 	
 	entries.sort_custom(_sort_function)
 	
-	entries.pop_back()
+	@warning_ignore("unsafe_cast") # entries typed as Array[HighscoreEntry]
+	var removed: HighscoreEntry = entries.pop_back() as HighscoreEntry
+	removed.removed.emit()
+	
+	entry_added.emit(entries.find(entry), entry)

@@ -9,7 +9,4 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var minutes: int = int(level.time / 60)
-	var seconds: int = int(level.time) % 60
-	
-	text = "%02d:%02d" % [minutes, seconds]
+	text = F.t(level.time)

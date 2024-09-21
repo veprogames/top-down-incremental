@@ -1,6 +1,8 @@
 class_name HighscoreEntry
 extends Resource
 
+signal removed
+
 @export var player_name: String
 @export var time: float
 

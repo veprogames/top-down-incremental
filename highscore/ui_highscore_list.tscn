@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhqwb1lmxih46"]
+
+[ext_resource type="Script" path="res://highscore/ui_highscore_list.gd" id="1_jnyl8"]
+
+[node name="UIHighscoreList" type="VBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnyl8")
