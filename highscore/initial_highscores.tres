@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="HighscoreList" load_steps=13 format=3 uid="uid://u7ok1ti6oll1"]
+
+[ext_resource type="Script" path="res://highscore/highscore_entry.gd" id="1_im043"]
+[ext_resource type="Script" path="res://highscore/highscore_list.gd" id="2_ml76r"]
+
+[sub_resource type="Resource" id="Resource_5w5pp"]
+script = ExtResource("1_im043")
+player_name = "Can"
+time = 1800.0
+
+[sub_resource type="Resource" id="Resource_nvtah"]
+script = ExtResource("1_im043")
+player_name = "You"
+time = 1500.0
+
+[sub_resource type="Resource" id="Resource_bi7of"]
+script = ExtResource("1_im043")
+player_name = "Reach"
+time = 1200.0
+
+[sub_resource type="Resource" id="Resource_x3qbk"]
+script = ExtResource("1_im043")
+player_name = "First "
+time = 900.0
+
+[sub_resource type="Resource" id="Resource_v8kcx"]
+script = ExtResource("1_im043")
+player_name = "Place?"
+time = 600.0
+
+[sub_resource type="Resource" id="Resource_grr4x"]
+script = ExtResource("1_im043")
+player_name = "Player"
+time = 360.0
+
+[sub_resource type="Resource" id="Resource_2fuwb"]
+script = ExtResource("1_im043")
+player_name = "Player"
+time = 240.0
+
+[sub_resource type="Resource" id="Resource_gl3vu"]
+script = ExtResource("1_im043")
+player_name = "Player"
+time = 180.0
+
+[sub_resource type="Resource" id="Resource_lk44f"]
+script = ExtResource("1_im043")
+player_name = "Player"
+time = 120.0
+
+[sub_resource type="Resource" id="Resource_2psh5"]
+script = ExtResource("1_im043")
+player_name = "Player"
+time = 60.0
+
+[resource]
+script = ExtResource("2_ml76r")
+entries = Array[ExtResource("1_im043")]([SubResource("Resource_5w5pp"), SubResource("Resource_nvtah"), SubResource("Resource_bi7of"), SubResource("Resource_x3qbk"), SubResource("Resource_v8kcx"), SubResource("Resource_grr4x"), SubResource("Resource_2fuwb"), SubResource("Resource_gl3vu"), SubResource("Resource_lk44f"), SubResource("Resource_2psh5")])

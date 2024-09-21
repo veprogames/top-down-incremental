@@ -9,6 +9,10 @@ var time: float = 0.0
 @onready var label_fps: Label = $CanvasLayer/LabelFPS
 
 
+func _ready() -> void:
+	Game.load_game()
+
+
 func _process(delta: float) -> void:
 	time += delta
 	
@@ -25,3 +29,9 @@ func add_gem(gem: Gem) -> void:
 	gems.add_child(gem)
 	if gems.get_child_count() > 4096:
 		gems.get_child(0).queue_free()
+
+
+func _on_player_died() -> void:
+	Game.highscores.add_entry(HighscoreEntry.create("Player", time))
+	Game.save_game()
+	get_tree().reload_current_scene.call_deferred()

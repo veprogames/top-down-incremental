@@ -148,3 +148,5 @@ shape = SubResource("WorldBoundaryShape2D_u1xbg")
 [node name="Player" parent="." node_paths=PackedStringArray("player_damage") instance=ExtResource("1_c1fdt")]
 z_index = 1
 player_damage = NodePath("../PlayerDamage")
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
