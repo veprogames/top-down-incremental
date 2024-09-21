@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn6xrko8wm3mq"]
+[gd_scene load_steps=7 format=3 uid="uid://bn6xrko8wm3mq"]
 
 [ext_resource type="PackedScene" uid="uid://jd8o7mwcbif0" path="res://bullet/bullet.tscn" id="1_d8o5g"]
 [ext_resource type="Script" path="res://bullet/player/bullet_player.gd" id="2_48owu"]
-[ext_resource type="Texture2D" uid="uid://cpw7fba1o3fp" path="res://bullet/bullet.png" id="3_vw647"]
+[ext_resource type="Texture2D" uid="uid://tpxlti4ku13n" path="res://bullet/player/bullet_player.png" id="3_j1pbq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8s14"]
+atlas = ExtResource("3_j1pbq")
+region = Rect2(0, 0, 12, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pruuk"]
+atlas = ExtResource("3_j1pbq")
+region = Rect2(12, 0, 12, 7)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lul23"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_vw647")
+"texture": SubResource("AtlasTexture_c8s14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pruuk")
 }],
 "loop": true,
 "name": &"default",
@@ -19,7 +30,6 @@ animations = [{
 collision_mask = 12
 script = ExtResource("2_48owu")
 damage = 1.0
-speed_multiplier_acceleration = 1.0
 
 [node name="AnimatedSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_lul23")

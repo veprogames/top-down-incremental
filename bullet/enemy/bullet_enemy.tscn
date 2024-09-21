@@ -4,22 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://b204ep1hunuub" path="res://bullet/enemy/bullet_enemy.png" id="2_bvs3k"]
 [ext_resource type="Script" path="res://bullet/enemy/bullet_enemy.gd" id="2_mefsr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3n3ux"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_47kud"]
 atlas = ExtResource("2_bvs3k")
-region = Rect2(0, 0, 7, 7)
+region = Rect2(0, 0, 13, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6umib"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n75ns"]
 atlas = ExtResource("2_bvs3k")
-region = Rect2(7, 0, 7, 7)
+region = Rect2(13, 0, 13, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_acpoq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3n3ux")
+"texture": SubResource("AtlasTexture_47kud")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6umib")
+"texture": SubResource("AtlasTexture_n75ns")
 }],
 "loop": true,
 "name": &"default",
