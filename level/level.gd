@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-var time: float = 550.0
+var time: float = 0.0
 
 @onready var enemies: Node2D = $Enemies
 @onready var gems: Node2D = $Gems

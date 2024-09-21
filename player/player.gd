@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	velocity = move_velocity + secondary_velocity
 	move_velocity = Vector2.ZERO
 	
-	var additional_firerate: float = 0.0125 * velocity.length()
+	var additional_firerate: float = 0.02 * velocity.length()
 	shoot_timer += (5 + additional_firerate) * delta
 	
 	# prevent jittering by only rotating at a min. velocity
