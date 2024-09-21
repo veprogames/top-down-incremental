@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvlybb8gnhxi"]
+
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_m2cps"]
+[ext_resource type="Texture2D" uid="uid://majjp7fi0ueh" path="res://enemy/enemies/enemy_white.png" id="2_nw458"]
+[ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="3_lg2pa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c62iv"]
+radius = 38.0
+
+[node name="EnemyWhite" instance=ExtResource("1_m2cps")]
+hp = 2e+06
+color = Color(1, 1, 1, 1)
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_nw458")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_c62iv")
+
+[node name="EnemyMoveBehaviorNoise" parent="." index="3" instance=ExtResource("3_lg2pa")]
+speed = 0.4
+amplitude = 400.0

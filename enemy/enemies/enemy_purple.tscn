@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx75iiiyb23ks"]
+
+[ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_hm0e4"]
+[ext_resource type="Texture2D" uid="uid://4s74d1o1vxgf" path="res://enemy/enemies/enemy_purple.png" id="2_721r4"]
+[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="3_03ulf"]
+[ext_resource type="PackedScene" uid="uid://3nk6b160b7an" path="res://behavior/enemy_move_behavior_noise.tscn" id="4_u1me7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsuen"]
+radius = 30.0
+
+[node name="EnemyPurple" instance=ExtResource("1_hm0e4")]
+hp = 125000.0
+color = Color(0.501961, 0, 1, 1)
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_721r4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_rsuen")
+
+[node name="BulletPodEnemy" parent="." index="3" instance=ExtResource("3_03ulf")]
+firerate = 1.0
+
+[node name="EnemyMoveBehaviorNoise" parent="." index="4" instance=ExtResource("4_u1me7")]
+speed = 1.11
+amplitude = 333.0
