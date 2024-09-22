@@ -22,18 +22,16 @@ func _process(delta: float) -> void:
 		time += delta
 	
 	label_fps.text = "%d fps" % Engine.get_frames_per_second()
+	
+	cleanup()
 
 
 func add_enemy(enemy: Enemy) -> void:
 	enemies.add_child(enemy)
-	if enemies.get_child_count() > 1024:
-		enemies.get_child(0).queue_free()
 
 
 func add_gem(gem: Gem) -> void:
 	gems.add_child(gem)
-	if gems.get_child_count() > 4096:
-		gems.get_child(0).queue_free()
 
 
 func _on_player_died() -> void:
@@ -46,3 +44,11 @@ func _on_player_died() -> void:
 
 func _on_game_over_screen_restarted() -> void:
 	get_tree().reload_current_scene()
+
+
+func cleanup() -> void:
+	if enemies.get_child_count() > 1024:
+		enemies.get_child(0).queue_free()
+	if gems.get_child_count() > 2048:
+		for i: int in 16:
+			gems.get_child(i).queue_free()

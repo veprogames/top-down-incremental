@@ -14,7 +14,12 @@ var magnet: Node2D
 
 @export var color: Color : set = _set_color
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Sprite2D = %Sprite
+@onready var visual: Node2D = $Visual
+
+
+func _ready() -> void:
+	set_process_input(false)
 
 
 func _set_color(col: Color) -> void:
@@ -44,9 +49,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func create_sparkle() -> void:
-	var sparkle: Sparkle = Sparkle.create(global_position)
-	sparkle.modulate = color
-	get_tree().current_scene.add_child(sparkle)
+	var sparkle_: Sparkle = Sparkle.create(global_position)
+	sparkle_.modulate = color
+	get_tree().current_scene.add_child(sparkle_)
 
 
 static func create_with_velocity(col: Color, vel: Vector2) -> Gem:
@@ -54,6 +59,18 @@ static func create_with_velocity(col: Color, vel: Vector2) -> Gem:
 	gem.color = col
 	gem.velocity = vel
 	return gem
+
+
+func activate() -> void:
+	set_process(true)
+	set_physics_process(true)
+	visual.show()
+
+
+func deactivate() -> void:
+	set_process(false)
+	set_physics_process(false)
+	visual.hide()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -67,8 +84,8 @@ func _on_area_exited(area: Area2D) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	set_physics_process(true)
+	activate()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	set_physics_process(false)
+	deactivate()

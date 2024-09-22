@@ -36,6 +36,7 @@ shape = SubResource("CircleShape2D_qfxhs")
 [node name="Magnet" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
 shape = SubResource("CircleShape2D_c7tk4")
