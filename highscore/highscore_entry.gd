@@ -1,6 +1,7 @@
 class_name HighscoreEntry
 extends Resource
 
+@warning_ignore("unused_signal") # used in UIHighscoreEntry
 signal removed
 
 @export var player_name: String
