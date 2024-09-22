@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func update() -> void:
-	label_total_damage.text = "%.0f" % player_damage.get_damage()
+	label_total_damage.text = F.nl(player_damage.get_damage())
 	
 	for key: String in player_damage._map:
 		var label: Label

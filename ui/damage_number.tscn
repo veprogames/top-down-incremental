@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56mk7mxmbfxj"]
+
+[ext_resource type="Script" path="res://ui/damage_number.gd" id="1_fln4s"]
+
+[node name="DamageNumber" type="Label"]
+custom_minimum_size = Vector2(256, 0)
+offset_right = 256.0
+offset_bottom = 48.0
+pivot_offset = Vector2(128, 24)
+text = "10 000"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_fln4s")
