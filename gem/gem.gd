@@ -39,7 +39,14 @@ func _on_body_entered(body: Node2D) -> void:
 	var player: Player = body as Player
 	if player:
 		player.gem_collected.emit(color)
+		create_sparkle()
 		queue_free()
+
+
+func create_sparkle() -> void:
+	var sparkle: Sparkle = Sparkle.create(global_position)
+	sparkle.modulate = color
+	get_tree().current_scene.add_child(sparkle)
 
 
 static func create_with_velocity(col: Color, vel: Vector2) -> Gem:

@@ -99,6 +99,12 @@ func spawn_gems() -> void:
 		level.add_gem(gem)
 
 
+func spawn_sparkle() -> Sparkle:
+	var sparkle: Sparkle = Sparkle.create(Vector2.ZERO)
+	add_child(sparkle)
+	return sparkle
+
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	set_process(false)
 	set_physics_process(false)
@@ -120,6 +126,11 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	var bullet: BulletPlayer = area as BulletPlayer
 	if bullet:
+		var sparkle: Sparkle = spawn_sparkle()
+		sparkle.global_position = bullet.global_position + Vector2(
+			randf_range(-4, 4),
+			randf_range(-4, 4)
+		)
 		knockback_velocity += bullet.get_velocity().normalized() * 100
 		bullet.queue_free()
 		damage(bullet.damage)

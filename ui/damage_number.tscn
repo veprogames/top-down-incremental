@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/damage_number.gd" id="1_fln4s"]
 
 [node name="DamageNumber" type="Label"]
+z_index = 6
 custom_minimum_size = Vector2(256, 0)
 offset_right = 256.0
 offset_bottom = 48.0
