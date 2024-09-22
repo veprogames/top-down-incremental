@@ -8,6 +8,9 @@ collision_mask = 7
 monitorable = false
 script = ExtResource("1_kqjdg")
 
+[node name="SpriteShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.501961)
+
 [node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -6,6 +6,8 @@ extends Area2D
 
 @onready var level: Level = get_tree().current_scene as Level
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var sprite: Sprite2D = $Sprite
+@onready var sprite_shadow: Sprite2D = $SpriteShadow
 
 var current_hp: float
 
@@ -28,6 +30,9 @@ func _ready() -> void:
 	for pod: BulletPodEnemy in Utils.get_children_of_type(self, BulletPod):
 		pod.timeout.connect(shoot)
 	
+	sprite_shadow.texture = sprite.texture
+	sprite_shadow.position.y = sprite.texture.get_height() / 16.0
+	
 	if not visible_on_screen_notifier_2d.is_on_screen():
 		set_process(false)
 		set_physics_process(false)
@@ -43,7 +48,9 @@ func _physics_process(delta: float) -> void:
 	
 	var motion: Vector2 = total_velocity * delta
 	
-	rotation = velocity.angle()
+	var angle: float = velocity.angle()
+	sprite.rotation = angle
+	sprite_shadow.rotation = angle
 	
 	position += motion
 	
