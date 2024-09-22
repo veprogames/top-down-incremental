@@ -13,5 +13,7 @@ func _on_timer_timeout() -> void:
 	if is_instance_valid(player):
 		var tier: int = EnemyFactory.get_random_tier(level.time)
 		var enemy: Enemy = EnemyFactory.create_random(tier)
-		enemy.position = player.position + 500 * Vector2.RIGHT.rotated(randf() * TAU)
-		level.add_enemy(enemy)
+		var dist: float = randf_range(100, 500)
+		var pos: Vector2 = player.position + dist * Vector2.RIGHT.rotated(randf() * TAU)
+		var indicator: EnemySpawnIndicator = EnemySpawnIndicator.create(pos, enemy)
+		level.add_child(indicator)
