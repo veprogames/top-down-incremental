@@ -6,8 +6,9 @@ extends Area2D
 
 @onready var level: Level = get_tree().current_scene as Level
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
-@onready var sprite: Sprite2D = $Sprite
-@onready var sprite_shadow: Sprite2D = $SpriteShadow
+@onready var sprite: Sprite2D = $Visual/Sprite
+@onready var sprite_shadow: Sprite2D = $Visual/SpriteShadow
+@onready var visual: Node2D = $Visual
 
 var current_hp: float
 
@@ -34,8 +35,7 @@ func _ready() -> void:
 	sprite_shadow.position.y = sprite.texture.get_height() / 16.0
 	
 	if not visible_on_screen_notifier_2d.is_on_screen():
-		set_process(false)
-		set_physics_process(false)
+		deactivate()
 
 
 func _physics_process(delta: float) -> void:
@@ -105,14 +105,24 @@ func spawn_sparkle() -> Sparkle:
 	return sparkle
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+func activate() -> void:
+	set_process(true)
+	set_physics_process(true)
+	visual.show()
+
+
+func deactivate() -> void:
 	set_process(false)
 	set_physics_process(false)
+	visual.hide()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	deactivate()
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	set_process(true)
-	set_physics_process(true)
+	activate()
 
 
 func _on_body_entered(body: Node2D) -> void:

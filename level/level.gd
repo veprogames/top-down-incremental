@@ -47,8 +47,8 @@ func _on_game_over_screen_restarted() -> void:
 
 
 func cleanup() -> void:
-	if enemies.get_child_count() > 1024:
+	if enemies.get_child_count() > 256:
 		enemies.get_child(0).queue_free()
-	if gems.get_child_count() > 2048:
+	if gems.get_child_count() > 1024:
 		for i: int in 16:
 			gems.get_child(i).queue_free()

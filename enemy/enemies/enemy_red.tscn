@@ -11,10 +11,10 @@ radius = 9.0
 [node name="EnemyRed" instance=ExtResource("1_k4h7d")]
 hp = 50.0
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="Visual" index="1"]
 texture = ExtResource("2_tydix")
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_1cno8")
 
 [node name="EnemyMoveBehaviorNoise" parent="." index="3" instance=ExtResource("4_drd8a")]

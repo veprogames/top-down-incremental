@@ -12,7 +12,7 @@ radius = 17.0
 hp = 500.0
 color = Color(1, 1, 0, 1)
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="Visual" index="1"]
 texture = ExtResource("2_bg0i7")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -20,8 +20,8 @@ rotation = 0.785398
 shape = SubResource("CircleShape2D_hne64")
 
 [node name="EnemyMoveBehaviorChase" parent="." index="3" instance=ExtResource("3_hj8bl")]
-speed = 155.0
+speed = 145.0
 
 [node name="EnemyMoveBehaviorNoise" parent="." index="4" instance=ExtResource("4_q5a64")]
 speed = 3.0
-amplitude = 400.0
+amplitude = 200.0
