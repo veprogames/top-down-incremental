@@ -66,10 +66,20 @@ func _physics_process(delta: float) -> void:
 
 func damage(amount: float) -> void:
 	current_hp -= amount
+	create_damage_number(amount)
 	if current_hp <= 0:
 		Events.enemy_died.emit(self)
 		queue_free()
 		spawn_gems.call_deferred()
+
+
+func create_damage_number(dmg: float) -> void:
+	var num: DamageNumber = DamageNumber.create(dmg)
+	num.global_position = 0 * Vector2(
+		randf_range(-8, 8),
+		randf_range(-8, 8)
+	) + global_position
+	get_tree().current_scene.add_child(num)
 
 
 func shoot(bullet: BulletEnemy) -> void:
