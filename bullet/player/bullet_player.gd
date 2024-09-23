@@ -14,6 +14,8 @@ const SPEED_MULTIPLIER_BASE: float = 1.5
 const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
 var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 
+var physics_frame: int = 0
+
 
 func _process(_delta: float) -> void:
 	animated_sprite.modulate.a = min(1.0, 2.0 * (1.0 - travelled))
@@ -24,13 +26,17 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
-	# bounce on walls
+	physics_frame += 1
+	
 	var motion: Vector2 = get_velocity() * delta
-	var ray_cast_result: Utils.RayCastResult = Utils.cast_ray(self, motion, 0b100)
-	if ray_cast_result:
-		var normal: Vector2 = ray_cast_result.normal
-		var normal_angle: float = normal.angle() as float
-		rotation += 2 * (normal_angle - rotation) + PI
+	
+	if physics_frame % 8 == 0:
+		# bounce on walls
+		var ray_cast_result: Utils.RayCastResult = Utils.cast_ray(self, motion.normalized() * 8, 0b100)
+		if ray_cast_result:
+			var normal: Vector2 = ray_cast_result.normal
+			var normal_angle: float = normal.angle() as float
+			rotation += 2 * (normal_angle - rotation) + PI
 	
 	# homing
 	if is_instance_valid(target_enemy):
