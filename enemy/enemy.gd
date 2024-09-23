@@ -134,6 +134,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	var auto_aim_area: AutoAimArea = area as AutoAimArea
+	if auto_aim_area:
+		auto_aim_area.add_enemy(self)
+	
 	var bullet: BulletPlayer = area as BulletPlayer
 	if bullet:
 		var sparkle: Sparkle = spawn_sparkle()
@@ -144,3 +148,9 @@ func _on_area_entered(area: Area2D) -> void:
 		knockback_velocity += bullet.get_velocity().normalized() * 100
 		bullet.queue_free()
 		damage(bullet.damage)
+
+
+func _on_area_exited(area: Area2D) -> void:
+	var auto_aim_area: AutoAimArea = area as AutoAimArea
+	if auto_aim_area:
+		auto_aim_area.remove_enemy(self)

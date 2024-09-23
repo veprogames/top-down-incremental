@@ -4,7 +4,7 @@
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 71
 monitorable = false
 script = ExtResource("1_kqjdg")
 
@@ -22,6 +22,7 @@ process_mode = 3
 rect = Rect2(-64, -64, 128, 128)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

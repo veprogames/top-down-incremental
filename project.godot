@@ -53,6 +53,7 @@ theme/custom="res://ui_theme.tres"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Gem"
 2d_physics/layer_6="Magnet"
+2d_physics/layer_7="AutoAimArea"
 
 [physics]
 

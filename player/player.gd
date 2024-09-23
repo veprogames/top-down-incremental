@@ -25,12 +25,10 @@ var invincibility_timer: float = 0.0
 var max_hp: int = 20
 var hp: int
 
-var target_enemy: Enemy
-
 @export var player_damage: PlayerDamage
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
-@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var auto_aim_area: AutoAimArea = $AutoAimArea
 
 
 func _ready() -> void:
@@ -72,25 +70,17 @@ func _physics_process(delta: float) -> void:
 	invincibility_timer = maxf(0.0, invincibility_timer - delta)
 
 
-func get_target_enemy() -> Enemy:
-	for i: int in shape_cast_2d.get_collision_count():
-		var enemy: Enemy = shape_cast_2d.get_collider(i) as Enemy
-		if enemy:
-			return enemy
-	return null
-
-
-func get_shoot_angle() -> float:
-	if is_instance_valid(target_enemy):
-		return (target_enemy.global_position - global_position).angle()
+func get_shoot_angle(target: Enemy) -> float:
+	if is_instance_valid(target):
+		return (target.global_position - global_position).angle()
 	return rotation
 
 
 func shoot() -> void:
-	target_enemy = get_target_enemy()
+	var target: Enemy = auto_aim_area.get_nearest_enemy()
 	var bullet: BulletPlayer = bullet_pod_player.create_bullet()
-	bullet.rotation = get_shoot_angle()
-	bullet.target_enemy = target_enemy
+	bullet.rotation = get_shoot_angle(target)
+	bullet.target_enemy = target
 	owner.add_child(bullet)
 
 
