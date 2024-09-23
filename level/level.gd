@@ -10,6 +10,7 @@ var game_over: bool = false
 
 @onready var label_fps: Label = $CanvasLayer/LabelFPS
 @onready var game_over_screen: GameOverScreen = $CanvasLayerGameOver/GameOverScreen
+@onready var canvas_layer_pause: CanvasLayer = $CanvasLayerPause
 
 
 func _ready() -> void:
@@ -20,6 +21,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not game_over:
 		time += delta
+		
+		if Input.is_action_just_pressed(&"game_back"):
+			canvas_layer_pause.add_child(PauseMenu.create())
 	
 	label_fps.text = "%d fps" % Engine.get_frames_per_second()
 	

@@ -156,5 +156,8 @@ layer = 2
 
 [node name="GameOverScreen" parent="CanvasLayerGameOver" instance=ExtResource("13_23rtj")]
 
+[node name="CanvasLayerPause" type="CanvasLayer" parent="."]
+layer = 3
+
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="restarted" from="CanvasLayerGameOver/GameOverScreen" to="." method="_on_game_over_screen_restarted"]
