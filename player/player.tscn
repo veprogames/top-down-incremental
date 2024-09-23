@@ -26,12 +26,14 @@ shape = SubResource("CircleShape2D_qfxhs")
 [node name="Magnet" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 0
+input_pickable = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
 shape = SubResource("CircleShape2D_c7tk4")
 
 [node name="AutoAimArea" parent="." instance=ExtResource("4_0ijiv")]
+input_pickable = false
 
 [connection signal="died" from="." to="." method="_on_died"]
 [connection signal="gem_collected" from="." to="." method="_on_gem_collected"]
