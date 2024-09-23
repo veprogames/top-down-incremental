@@ -10,11 +10,12 @@ var game_over: bool = false
 
 @onready var label_fps: Label = $CanvasLayer/LabelFPS
 @onready var game_over_screen: GameOverScreen = $CanvasLayerGameOver/GameOverScreen
-@onready var canvas_layer_pause: CanvasLayer = $CanvasLayerPause
+@onready var canvas_layer_dialogs: CanvasLayer = $CanvasLayerDialogs
 
 
 func _ready() -> void:
 	Game.load_game()
+	Game.settings.apply()
 	game_over_screen.initialize()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -23,7 +24,10 @@ func _process(delta: float) -> void:
 		time += delta
 		
 		if Input.is_action_just_pressed(&"game_back"):
-			canvas_layer_pause.add_child(PauseMenu.create())
+			var pause_menu: PauseMenu = PauseMenu.create()
+			canvas_layer_dialogs.add_child(pause_menu)
+			pause_menu.options_pressed.connect(_on_pause_menu_options_pressed)
+			
 	
 	label_fps.text = "%d fps" % Engine.get_frames_per_second()
 	
@@ -38,6 +42,14 @@ func add_gem(gem: Gem) -> void:
 	gems.add_child(gem)
 
 
+func cleanup() -> void:
+	if enemies.get_child_count() > 256:
+		enemies.get_child(0).queue_free()
+	if gems.get_child_count() > 1024:
+		for i: int in 16:
+			gems.get_child(i).queue_free()
+
+
 func _on_player_died() -> void:
 	game_over = true
 	game_over_screen.fade_in()
@@ -50,9 +62,5 @@ func _on_game_over_screen_restarted() -> void:
 	get_tree().reload_current_scene()
 
 
-func cleanup() -> void:
-	if enemies.get_child_count() > 256:
-		enemies.get_child(0).queue_free()
-	if gems.get_child_count() > 1024:
-		for i: int in 16:
-			gems.get_child(i).queue_free()
+func _on_pause_menu_options_pressed(menu: OptionsMenu) -> void:
+	canvas_layer_dialogs.add_child(menu)

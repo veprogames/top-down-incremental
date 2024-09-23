@@ -1,6 +1,8 @@
 class_name PauseMenu
 extends Panel
 
+signal options_pressed(menu: OptionsMenu)
+
 static var Scene: PackedScene = preload("res://level/ui/pause_menu.tscn")
 
 @onready var tree: SceneTree = get_tree()
@@ -33,3 +35,7 @@ func _on_button_main_menu_pressed() -> void:
 
 static func create() -> PauseMenu:
 	return Scene.instantiate()
+
+
+func _on_button_options_pressed() -> void:
+	options_pressed.emit(OptionsMenu.create())

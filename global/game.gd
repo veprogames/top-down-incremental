@@ -4,6 +4,7 @@ extends Object
 static var SAVE_PATH: String = "user://game.save"
 
 static var highscores: HighscoreList = preload("res://highscore/initial_highscores.tres").duplicate()
+static var settings: GameSettings = GameSettings.new()
 
 
 static func save_game() -> void:
