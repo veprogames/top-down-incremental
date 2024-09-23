@@ -36,7 +36,27 @@ text = "Highscores"
 layout_mode = 2
 text = "Quit"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+offset_top = 16.0
+offset_bottom = 86.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "Hello,"
+horizontal_alignment = 1
+
+[node name="LineEditPlayerName" type="LineEdit" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+text = "Player"
+alignment = 1
+max_length = 12
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonOptions" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonHighscores" to="." method="_on_button_highscores_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="text_changed" from="CanvasLayer/VBoxContainer2/LineEditPlayerName" to="." method="_on_line_edit_player_name_text_changed"]

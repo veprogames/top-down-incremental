@@ -14,8 +14,6 @@ var game_over: bool = false
 
 
 func _ready() -> void:
-	Game.load_game()
-	Game.settings.apply()
 	game_over_screen.initialize()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

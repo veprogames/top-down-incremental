@@ -4,12 +4,14 @@ extends Object
 static var SAVE_PATH: String = "user://game.save"
 
 static var highscores: HighscoreList = preload("res://highscore/initial_highscores.tres").duplicate()
+static var player_name: String = "Player"
 static var settings: GameSettings = GameSettings.new()
 
 
 static func save_game() -> void:
 	var save_obj: SaveGameStruct = SaveGameStruct.new()
 	save_obj.highscores = highscores
+	save_obj.player_name = player_name
 	
 	var file: FileAccess = FileAccess.open_compressed(
 		SAVE_PATH,
@@ -38,3 +40,4 @@ static func load_game() -> void:
 	
 	if loaded:
 		Game.highscores = loaded.highscores
+		Game.player_name = loaded.player_name
