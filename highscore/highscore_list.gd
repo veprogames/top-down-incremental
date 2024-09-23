@@ -12,6 +12,10 @@ func _sort_function(a: HighscoreEntry, b: HighscoreEntry) -> int:
 
 
 func add_entry(entry: HighscoreEntry) -> void:
+	# dont add if it won't appear on the board
+	if entry.time < entries[entries.size() - 1].time:
+		return
+	
 	entries.append(entry)
 	
 	entries.sort_custom(_sort_function)
