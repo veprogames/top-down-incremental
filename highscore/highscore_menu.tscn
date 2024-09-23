@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://btkmxagvw6xom"]
+[gd_scene load_steps=4 format=3 uid="uid://btkmxagvw6xom"]
 
 [ext_resource type="Script" path="res://highscore/highscore_menu.gd" id="1_prrkh"]
 [ext_resource type="PackedScene" uid="uid://dhqwb1lmxih46" path="res://highscore/ui_highscore_list.tscn" id="1_xhihs"]
+[ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="2_by1cn"]
 
 [node name="HighscoreMenu" type="Node2D"]
 script = ExtResource("1_prrkh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_by1cn")
+stretch_mode = 1
 
 [node name="ButtonBack" type="Button" parent="CanvasLayer"]
 offset_right = 8.0

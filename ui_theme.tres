@@ -8,6 +8,7 @@ bg_color = Color(0, 0, 0, 0.501961)
 [resource]
 default_font = ExtResource("1_us77q")
 default_font_size = 36
+Button/constants/outline_size = 16
 HFlowContainer/constants/h_separation = 16
 HFlowContainer/constants/v_separation = 8
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.25098)
@@ -20,6 +21,7 @@ LabelLarge/constants/outline_size = 20
 LabelLarge/constants/shadow_offset_x = 6
 LabelLarge/constants/shadow_offset_y = 6
 LabelLarge/font_sizes/font_size = 72
+LineEdit/constants/outline_size = 16
 MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
