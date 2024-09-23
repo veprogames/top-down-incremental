@@ -28,10 +28,15 @@ text = "Play"
 layout_mode = 2
 text = "Options"
 
+[node name="ButtonHighscores" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Highscores"
+
 [node name="ButtonQuit" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonHighscores" to="." method="_on_button_highscores_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
