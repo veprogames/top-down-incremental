@@ -52,7 +52,6 @@ tile_set = ExtResource("12_nl3ch")
 navigation_enabled = false
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wppie")]
-position = Vector2(634, 481)
 
 [node name="PlayerDamage" parent="." instance=ExtResource("3_xo2ng")]
 

@@ -49,7 +49,7 @@ func cleanup() -> void:
 	var gems_: int = gems.get_child_count()
 	if gems_ > 1024:
 		@warning_ignore("integer_division") # desired
-		for i: int in (gems_ - 1024) / 8:
+		for i: int in (gems_ - 1024) / 8 + 1:
 			gems.get_child(i).queue_free()
 
 
