@@ -16,8 +16,8 @@ static var Enemies: Array[PackedScene] = [
 
 
 static func get_lategame_hp(level_time: float) -> float:
-	var pow: float = maxf(0.0, (level_time - 1800) / 120)
-	return 50e6 * 2 ** pow
+	var exponent: float = maxf(0.0, (level_time - 1800) / 120)
+	return 50e6 * 2 ** exponent
 
 
 static func get_tier_for_time(level_time: float) -> int:
