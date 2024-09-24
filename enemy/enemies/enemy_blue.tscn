@@ -19,7 +19,7 @@ speed = 4.0
 [node name="EnemyMoveBehaviorChase" parent="." index="1" instance=ExtResource("3_uu0y1")]
 speed = 225.0
 
-[node name="Sprite" parent="Visual" index="1"]
+[node name="EnemyVisuals" parent="." index="2"]
 texture = ExtResource("2_wa38a")
 
 [node name="CollisionShape2D" parent="." index="3"]

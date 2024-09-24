@@ -11,7 +11,7 @@ radius = 38.0
 hp = 5e+06
 color = Color(1, 1, 1, 1)
 
-[node name="Sprite" parent="Visual" index="1"]
+[node name="EnemyVisuals" parent="." index="0"]
 texture = ExtResource("2_nw458")
 
 [node name="CollisionShape2D" parent="." index="1"]

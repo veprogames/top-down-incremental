@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bprric2282qeg"]
+[gd_scene load_steps=3 format=3 uid="uid://bprric2282qeg"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_kqjdg"]
+[ext_resource type="PackedScene" uid="uid://r70ocj635x7p" path="res://enemy/enemy_visuals.tscn" id="2_ctjuc"]
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 8
@@ -8,12 +9,7 @@ collision_mask = 71
 monitorable = false
 script = ExtResource("1_kqjdg")
 
-[node name="Visual" type="Node2D" parent="."]
-
-[node name="SpriteShadow" type="Sprite2D" parent="Visual"]
-modulate = Color(0, 0, 0, 0.501961)
-
-[node name="Sprite" type="Sprite2D" parent="Visual"]
+[node name="EnemyVisuals" parent="." instance=ExtResource("2_ctjuc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

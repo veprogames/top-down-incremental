@@ -1,16 +1,16 @@
 class_name Enemy
 extends Area2D
 
+signal current_hp_changed(hp: float)
+
 @export var hp: float = 1 : set = set_hp
 @export var color: Color = Color.RED
 
 @onready var level: Level = get_tree().current_scene as Level
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
-@onready var sprite: Sprite2D = $Visual/Sprite
-@onready var sprite_shadow: Sprite2D = $Visual/SpriteShadow
-@onready var visual: Node2D = $Visual
+@onready var enemy_visuals: EnemyVisuals = $EnemyVisuals
 
-var current_hp: float
+var current_hp: float : set = set_current_hp
 
 var move_behaviors: Array[EnemyMoveBehavior]
 var bullet_pods: Array[BulletPodEnemy]
@@ -36,9 +36,6 @@ func _ready() -> void:
 	for pod: BulletPodEnemy in Utils.get_children_of_type(self, BulletPod):
 		pod.timeout.connect(shoot)
 	
-	sprite_shadow.texture = sprite.texture
-	sprite_shadow.position.y = sprite.texture.get_height() / 16.0
-	
 	if not visible_on_screen_notifier_2d.is_on_screen():
 		deactivate()
 
@@ -56,8 +53,7 @@ func _physics_process(delta: float) -> void:
 	var motion: Vector2 = total_velocity * delta
 	
 	var angle: float = velocity.angle()
-	sprite.rotation = angle
-	sprite_shadow.rotation = angle
+	enemy_visuals.rotation = angle
 	
 	position += motion
 	
@@ -68,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		
 		# check collision with walls
 		# can rarely glitch out on concave edges
-		var distance: float = sprite.texture.get_width() / 2.0
+		var distance: float = enemy_visuals.texture.get_width() / 2.0
 		var raycast_result: Utils.RayCastResult = Utils.cast_ray(self, motion.normalized() * distance, 0b100)
 		if raycast_result:
 			var knockback: Vector2 = raycast_result.normal * 400
@@ -95,7 +91,7 @@ func create_damage_number(dmg: float) -> void:
 
 
 func shoot(bullet: BulletEnemy) -> void:
-	bullet.rotation = sprite.rotation
+	bullet.rotation = enemy_visuals.rotation
 	get_tree().current_scene.add_child(bullet)
 
 
@@ -121,13 +117,18 @@ func spawn_sparkle() -> Sparkle:
 func activate() -> void:
 	set_process(true)
 	set_physics_process(true)
-	visual.show()
+	enemy_visuals.show()
 
 
 func deactivate() -> void:
 	set_process(false)
 	set_physics_process(false)
-	visual.hide()
+	enemy_visuals.hide()
+
+
+func set_current_hp(hp_: float) -> void:
+	current_hp = hp_
+	current_hp_changed.emit(hp_)
 
 
 ## Reset the current_hp when changing max hp
