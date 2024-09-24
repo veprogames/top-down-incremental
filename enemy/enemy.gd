@@ -1,7 +1,7 @@
 class_name Enemy
 extends Area2D
 
-@export var hp: float = 1
+@export var hp: float = 1 : set = set_hp
 @export var color: Color = Color.RED
 
 @onready var level: Level = get_tree().current_scene as Level
@@ -100,7 +100,7 @@ func shoot(bullet: BulletEnemy) -> void:
 
 
 func spawn_gems() -> void:
-	var count: int = randi_range(6, 10)
+	var count: int = randi_range(6, 8)
 	for i: int in count:
 		var vel: Vector2 = velocity.normalized() * randf_range(60, 80)
 		vel += velocity * randf_range(0.5, 1.5)
@@ -128,6 +128,12 @@ func deactivate() -> void:
 	set_process(false)
 	set_physics_process(false)
 	visual.hide()
+
+
+## Reset the current_hp when changing max hp
+func set_hp(new_hp: float) -> void:
+	hp = new_hp
+	current_hp = new_hp
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
