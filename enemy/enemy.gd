@@ -97,10 +97,10 @@ func shoot(bullet: BulletEnemy) -> void:
 func spawn_gems() -> void:
 	var count: int = randi_range(4, 8)
 	for i: int in count:
-		var vel: Vector2 = velocity.normalized() * randf_range(30, 70)
+		var vel: Vector2 = velocity.normalized() * randf_range(60, 80)
 		vel += velocity * randf_range(0.5, 1.5)
 		vel *= -1
-		vel = vel.rotated(randf_range(-PI / 6, PI / 6))
+		vel = vel.rotated(randf_range(-PI / 5, PI / 5))
 		
 		var gem: Gem = Gem.create_with_velocity(color, vel)
 		gem.position = global_position

@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_instance_valid(magnet):
 		var distance: Vector2 = magnet.global_position - global_position
-		var speed: float = 20000.0 / distance.length_squared()
+		var speed: float = 50_000.0 / distance.length_squared()
 		velocity += (distance).normalized() * speed
 	
 	velocity = velocity.lerp(Vector2.ZERO, FRICTION * delta)
