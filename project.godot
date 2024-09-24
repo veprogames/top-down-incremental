@@ -13,7 +13,6 @@ config_version=5
 config/name="Top Down Incremental"
 run/main_scene="res://main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-run/max_fps=240
 config/icon="res://icon.svg"
 
 [autoload]
@@ -66,9 +65,9 @@ game_back={
 
 [physics]
 
-common/physics_ticks_per_second=240
 common/physics_jitter_fix=1.0
 2d/solver/solver_iterations=4
+common/physics_interpolation=true
 common/enable_object_picking=false
 
 [rendering]

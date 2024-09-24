@@ -11,10 +11,13 @@ var config: ConfigFile = ConfigFile.new()
 ## 0 = low, 1 = high
 var physics_mode: int : set = set_physics_mode
 
+var sensitivity: float = 0.5
+
 func _init() -> void:
 	config.load(CONFIG_PATH)
 	
 	physics_mode = config.get_value("Game", "physics", PHYSICS_HIGH)
+	sensitivity = config.get_value("Game", "sensitivity", 0.5)
 
 
 func save() -> void:
@@ -23,9 +26,9 @@ func save() -> void:
 
 func apply() -> void:
 	if physics_mode == PHYSICS_HIGH:
-		Engine.physics_ticks_per_second = 240
-	else:
 		Engine.physics_ticks_per_second = 60
+	else:
+		Engine.physics_ticks_per_second = 30
 
 
 func set_physics_mode(mode: int) -> void:
@@ -33,3 +36,8 @@ func set_physics_mode(mode: int) -> void:
 	
 	physics_mode = mode
 	config.set_value("Game", "physics", mode)
+
+
+func set_sensitivity(s: float) -> void:
+	sensitivity = s
+	config.set_value("Game", "sensitivity", s)

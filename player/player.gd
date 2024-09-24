@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = move_velocity + secondary_velocity
+	velocity = move_velocity * Game.settings.sensitivity + secondary_velocity
 	move_velocity = Vector2.ZERO
 	
 	var additional_firerate: float = 0.02 * velocity.length()

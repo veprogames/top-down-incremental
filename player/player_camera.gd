@@ -15,7 +15,7 @@ func _ready() -> void:
 	zoom = BASE_ZOOM * 10
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if is_instance_valid(player):
 		position = player.global_position
 	

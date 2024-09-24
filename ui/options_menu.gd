@@ -3,8 +3,11 @@ extends Panel
 
 static var Scene: PackedScene = preload("res://ui/options_menu.tscn")
 
+@onready var h_slider_sensitivity: HSlider = $MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity
 
 func _ready() -> void:
+	h_slider_sensitivity.value = Game.settings.sensitivity
+	
 	scale = Vector2.ZERO
 	var tween: Tween = create_tween()
 	tween.tween_property(self, ^"scale", Vector2.ONE, 0.5) \
@@ -35,3 +38,7 @@ func _on_button_close_pressed() -> void:
 
 static func create() -> OptionsMenu:
 	return Scene.instantiate() as OptionsMenu
+
+
+func _on_h_slider_sensitivity_value_changed(value: float) -> void:
+	Game.settings.sensitivity = value

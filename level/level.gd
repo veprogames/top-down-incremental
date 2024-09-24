@@ -41,10 +41,15 @@ func add_gem(gem: Gem) -> void:
 
 
 func cleanup() -> void:
-	if enemies.get_child_count() > 256:
-		enemies.get_child(0).queue_free()
-	if gems.get_child_count() > 1024:
-		for i: int in 16:
+	var enemies_: int = enemies.get_child_count()
+	if enemies_ > 256:
+		for i: int in enemies_ - 256:
+			enemies.get_child(0).queue_free()
+		
+	var gems_: int = gems.get_child_count()
+	if gems_ > 1024:
+		@warning_ignore("integer_division") # desired
+		for i: int in (gems_ - 1024) / 8:
 			gems.get_child(i).queue_free()
 
 

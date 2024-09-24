@@ -14,7 +14,7 @@ const SPEED_MULTIPLIER_BASE: float = 1.5
 const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
 var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 
-var physics_frame: int = 0
+var raycast_timer: float = 0.0
 
 
 func _process(_delta: float) -> void:
@@ -26,11 +26,13 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
-	physics_frame += 1
+	raycast_timer += delta
 	
 	var motion: Vector2 = get_velocity() * delta
 	
-	if physics_frame % 8 == 0:
+	if raycast_timer > 0.03:
+		raycast_timer = 0.0
+		
 		# bounce on walls
 		var ray_cast_result: Utils.RayCastResult = Utils.cast_ray(self, motion.normalized() * 8, 0b100)
 		if ray_cast_result:

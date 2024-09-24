@@ -19,7 +19,7 @@ var velocity: Vector2
 var knockback_velocity: Vector2 = Vector2.ZERO
 const KNOCKBACK_FRICTION: float = 2
 
-var physics_frame: int = 0
+var raycast_timer: float = 0.0
 
 func _ready() -> void:
 	assert(is_instance_valid(level))
@@ -41,7 +41,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	physics_frame += 1
+	raycast_timer += delta
 	
 	velocity = Vector2.ZERO
 	
@@ -60,7 +60,9 @@ func _physics_process(delta: float) -> void:
 	
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, delta * KNOCKBACK_FRICTION)
 	
-	if physics_frame % 8 == 0:
+	if raycast_timer > 0.03:
+		raycast_timer = 0.0
+		
 		# check collision with walls
 		# can rarely glitch out on concave edges
 		var distance: float = sprite.texture.get_width() / 2.0
