@@ -11,7 +11,7 @@ var config: ConfigFile = ConfigFile.new()
 ## 0 = low, 1 = high
 var physics_mode: int : set = set_physics_mode
 
-var sensitivity: float = 0.5
+var sensitivity: float = 0.5 : set = set_sensitivity
 
 func _init() -> void:
 	config.load(CONFIG_PATH)

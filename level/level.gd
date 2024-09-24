@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-var time: float = 1700.0
+var time: float = 0.0
 
 var game_over: bool = false
 
