@@ -21,6 +21,9 @@ const KNOCKBACK_FRICTION: float = 2
 
 var raycast_timer: float = 0.0
 
+# prevent multi drop
+var dead: bool = false
+
 func _ready() -> void:
 	assert(is_instance_valid(level))
 	
@@ -75,7 +78,8 @@ func _physics_process(delta: float) -> void:
 func damage(amount: float) -> void:
 	current_hp -= amount
 	create_damage_number(amount)
-	if current_hp <= 0:
+	if not dead and current_hp <= 0:
+		dead = true
 		Events.enemy_died.emit(self)
 		queue_free()
 		spawn_gems.call_deferred()
@@ -91,11 +95,12 @@ func create_damage_number(dmg: float) -> void:
 
 
 func shoot(bullet: BulletEnemy) -> void:
+	bullet.rotation = sprite.rotation
 	get_tree().current_scene.add_child(bullet)
 
 
 func spawn_gems() -> void:
-	var count: int = randi_range(4, 8)
+	var count: int = randi_range(6, 10)
 	for i: int in count:
 		var vel: Vector2 = velocity.normalized() * randf_range(60, 80)
 		vel += velocity * randf_range(0.5, 1.5)
@@ -147,7 +152,8 @@ func _on_area_entered(area: Area2D) -> void:
 		auto_aim_area.add_enemy(self)
 	
 	var bullet: BulletPlayer = area as BulletPlayer
-	if bullet:
+	if bullet and not bullet.did_hit:
+		bullet.did_hit = true
 		var sparkle: Sparkle = spawn_sparkle()
 		sparkle.global_position = bullet.global_position + Vector2(
 			randf_range(-4, 4),
