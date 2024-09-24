@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-var time: float = 0.0
+var time: float = 1700.0
 
 var game_over: bool = false
 
@@ -57,7 +57,7 @@ func _on_player_died() -> void:
 	game_over = true
 	game_over_screen.fade_in()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Game.highscores.add_entry(HighscoreEntry.create("Player", time))
+	Game.highscores.add_entry(HighscoreEntry.create(Game.player_name, time))
 	Game.save_game()
 
 
