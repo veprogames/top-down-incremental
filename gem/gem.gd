@@ -17,6 +17,7 @@ var magnet: Node2D
 
 @onready var sprite_2d: Sprite2D = %Sprite
 @onready var visual: Node2D = $Visual
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:
@@ -67,12 +68,16 @@ func activate() -> void:
 	set_process(true)
 	set_physics_process(true)
 	visual.show()
+	monitoring = true
+	collision_shape_2d.disabled = false
 
 
 func deactivate() -> void:
 	set_process(false)
 	set_physics_process(false)
 	visual.hide()
+	monitoring = false
+	collision_shape_2d.disabled = true
 
 
 func _on_area_entered(area: Area2D) -> void:

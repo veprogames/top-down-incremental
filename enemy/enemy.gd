@@ -10,6 +10,7 @@ signal current_hp_changed(hp: float)
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var enemy_visuals: EnemyVisuals = $EnemyVisuals
 @onready var audio_stream_player_hit: AudioStreamPlayer = $AudioStreamPlayerHit
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var current_hp: float : set = set_current_hp
 
@@ -119,12 +120,16 @@ func activate() -> void:
 	set_process(true)
 	set_physics_process(true)
 	enemy_visuals.show()
+	monitoring = true
+	collision_shape_2d.disabled = false
 
 
 func deactivate() -> void:
 	set_process(false)
 	set_physics_process(false)
 	enemy_visuals.hide()
+	monitoring = false
+	collision_shape_2d.disabled = true
 
 
 func set_current_hp(hp_: float) -> void:
