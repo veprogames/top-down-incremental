@@ -9,6 +9,7 @@ signal current_hp_changed(hp: float)
 @onready var level: Level = get_tree().current_scene as Level
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var enemy_visuals: EnemyVisuals = $EnemyVisuals
+@onready var audio_stream_player_hit: AudioStreamPlayer = $AudioStreamPlayerHit
 
 var current_hp: float : set = set_current_hp
 
@@ -168,6 +169,7 @@ func _on_area_entered(area: Area2D) -> void:
 		)
 		knockback_velocity += bullet.get_velocity().normalized() * 100
 		bullet.queue_free()
+		audio_stream_player_hit.play()
 		damage(bullet.damage)
 
 

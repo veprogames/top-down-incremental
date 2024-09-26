@@ -2,6 +2,7 @@ class_name Gem
 extends Area2D
 
 static var GemScene: PackedScene = preload("res://gem/gem.tscn")
+static var stream_collect: AudioStream = preload("res://gem/collect.ogg")
 
 const FRICTION: float = 3
 
@@ -44,6 +45,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var player: Player = body as Player
 	if player:
 		player.gem_collected.emit(color)
+		GlobalSound.play(Gem.stream_collect, player.gem_pitch)
 		create_sparkle()
 		queue_free()
 

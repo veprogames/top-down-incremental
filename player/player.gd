@@ -25,6 +25,8 @@ var invincibility_timer: float = 0.0
 var max_hp: int = 20
 var hp: int
 
+var gem_pitch: float = 0.4
+
 @export var player_damage: PlayerDamage
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
@@ -41,8 +43,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		move_velocity += mouse_event.relative * MOVE_SPEED
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	modulate = Color.RED if invincibility_timer > 0 else Color.WHITE
+	
+	gem_pitch = lerpf(gem_pitch, 0.4, 2 * delta)
 
 
 func _physics_process(delta: float) -> void:
@@ -109,3 +113,4 @@ func _on_died() -> void:
 func _on_gem_collected(color: Color) -> void:
 	var html: String = color.to_html()
 	player_damage.add_multiplier(html, 0.002)
+	gem_pitch += 0.01
