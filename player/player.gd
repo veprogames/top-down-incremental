@@ -25,7 +25,7 @@ var invincibility_timer: float = 0.0
 var max_hp: int = 20
 var hp: int
 
-var gem_pitch: float = 0.4
+var gem_pitch: float = 0.8
 
 @export var player_damage: PlayerDamage
 
@@ -46,7 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	modulate = Color.RED if invincibility_timer > 0 else Color.WHITE
 	
-	gem_pitch = lerpf(gem_pitch, 0.4, 2 * delta)
+	gem_pitch = lerpf(gem_pitch, 0.8, 2 * delta)
 
 
 func _physics_process(delta: float) -> void:
