@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://yyvnjlmy5w6q"]
 
-[ext_resource type="Texture2D" uid="uid://b2t3qpomvf0jw" path="res://level/tiles/tiles2.png" id="1_0wrqs"]
+[ext_resource type="Texture2D" uid="uid://b2t3qpomvf0jw" path="res://level/tiles/tiles_terrain.png" id="1_mnxmo"]
 [ext_resource type="Texture2D" uid="uid://davdtc1usqwie" path="res://level/tiles/tiles_vegetation.png" id="2_fgrsr"]
 [ext_resource type="Texture2D" uid="uid://c8s7xrnr3q8o" path="res://level/tiles/tiles_blocks.png" id="3_dswxc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwlee"]
-texture = ExtResource("1_0wrqs")
+texture = ExtResource("1_mnxmo")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrains_peering_bit/bottom_left_corner = 0
