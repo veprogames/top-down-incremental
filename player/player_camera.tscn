@@ -7,3 +7,5 @@ physics_interpolation_mode = 2
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 script = ExtResource("1_iil87")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
