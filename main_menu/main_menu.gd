@@ -1,6 +1,9 @@
 class_name MainMenu
 extends Node2D
 
+var LevelScene: PackedScene = preload("res://level/level.tscn")
+var HighscoreScene: PackedScene = preload("res://highscore/highscore_menu.tscn")
+
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var line_edit_player_name: LineEdit = $CanvasLayer/VBoxContainer2/LineEditPlayerName
 
@@ -12,12 +15,12 @@ func _ready() -> void:
 
 
 func _on_button_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://level/level.tscn")
+	SceneSwitcher.change(LevelScene)
 	Game.save_game()
 
 
 func _on_button_quit_pressed() -> void:
-	get_tree().quit()
+	SceneSwitcher.quit()
 	Game.save_game()
 
 
@@ -26,7 +29,7 @@ func _on_button_options_pressed() -> void:
 
 
 func _on_button_highscores_pressed() -> void:
-	get_tree().change_scene_to_file("res://highscore/highscore_menu.tscn")
+	SceneSwitcher.change(HighscoreScene)
 
 
 func _on_line_edit_player_name_text_changed(new_text: String) -> void:

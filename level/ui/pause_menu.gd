@@ -3,6 +3,7 @@ extends Panel
 
 signal options_pressed(menu: OptionsMenu)
 
+static var MainMenuScene: PackedScene = preload("res://main_menu/main_menu.tscn")
 static var Scene: PackedScene = preload("res://level/ui/pause_menu.tscn")
 
 @onready var tree: SceneTree = get_tree()
@@ -29,8 +30,8 @@ func _on_button_continue_pressed() -> void:
 
 
 func _on_button_main_menu_pressed() -> void:
+	SceneSwitcher.change(MainMenuScene)
 	tree.paused = false
-	tree.change_scene_to_file("res://main_menu/main_menu.tscn")
 
 
 static func create() -> PauseMenu:
