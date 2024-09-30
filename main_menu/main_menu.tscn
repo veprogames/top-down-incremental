@@ -1,22 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd54lb04sfcow"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_d4mu3"]
-[ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="2_ytbdu"]
+[ext_resource type="PackedScene" uid="uid://bwjybk11mpwhu" path="res://ui/menu_background.tscn" id="2_s30fd"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_d4mu3")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MenuBackground" parent="." instance=ExtResource("2_s30fd")]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_ytbdu")
-stretch_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
