@@ -9,6 +9,7 @@ var HighscoreScene: PackedScene = preload("res://highscore/highscore_menu.tscn")
 
 
 func _ready() -> void:
+	randomize()
 	Game.load_game()
 	Game.settings.apply()
 	line_edit_player_name.text = Game.player_name

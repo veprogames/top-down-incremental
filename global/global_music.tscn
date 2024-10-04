@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5fvovysehsw7"]
+
+[ext_resource type="AudioStream" uid="uid://dy1kp0lwpcwq1" path="res://music/prism.ogg" id="1_j7okv"]
+[ext_resource type="AudioStream" uid="uid://dckodrfp1dn7k" path="res://music/trail_to_dolores.ogg" id="2_sc7wg"]
+[ext_resource type="AudioStream" uid="uid://mj46mwpj4b8r" path="res://music/envy.ogg" id="3_g1gp5"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_sv4eq"]
+shuffle = true
+fade_time = 1.0
+stream_count = 3
+stream_0 = ExtResource("1_j7okv")
+stream_1 = ExtResource("2_sc7wg")
+stream_2 = ExtResource("3_g1gp5")
+
+[node name="GlobalMusic" type="Node"]
+process_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_sv4eq")
+autoplay = true
+bus = &"Music"

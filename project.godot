@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Events="*res://global/events.gd"
 GlobalSound="*res://global/global_sound.gd"
 SceneSwitcherNode="*res://global/scene_switcher_node.tscn"
+GlobalMusic="*res://global/global_music.tscn"
 
 [debug]
 
