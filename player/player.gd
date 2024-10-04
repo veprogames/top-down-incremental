@@ -53,9 +53,6 @@ func _physics_process(delta: float) -> void:
 	velocity = move_velocity * Game.settings.sensitivity + secondary_velocity
 	move_velocity = Vector2.ZERO
 	
-	var additional_firerate: float = 0.02 * velocity.length()
-	shoot_timer += (5 + additional_firerate) * delta
-	
 	# prevent jittering by only rotating at a min. velocity
 	if velocity.length() > VELOCITY_THRESHOLD:
 		target_rotation = velocity.angle()
@@ -66,6 +63,10 @@ func _physics_process(delta: float) -> void:
 	secondary_velocity = secondary_velocity.lerp(Vector2.ZERO, SECONDARY_FRICTION * delta)
 	
 	move_and_slide()
+	
+	# calculate after slide to prevent "running into wall" exploit
+	var additional_firerate: float = 0.02 * velocity.length()
+	shoot_timer += (5 + additional_firerate) * delta
 	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
