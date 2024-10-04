@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=20 format=4 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="1_3sncf"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_08xo1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b23dh2uhv8tvh" path="res://level/ui/level_time.tscn" id="6_u8prs"]
 [ext_resource type="PackedScene" uid="uid://brn8qtcwgwwuq" path="res://spawner/level_spawner.tscn" id="7_geyi5"]
 [ext_resource type="PackedScene" uid="uid://bvo27dq1r1rt3" path="res://level/ui/game_over_screen.tscn" id="13_23rtj"]
+[ext_resource type="Texture2D" uid="uid://bx3ofnxwmi0xx" path="res://level/ui/vignette.png" id="14_n5n3b"]
 [ext_resource type="AudioStream" uid="uid://conc5xl6dvld0" path="res://level/game_over.ogg" id="14_p1eh5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vjv4r"]
@@ -167,6 +168,15 @@ layer = 2
 
 [node name="CanvasLayerDialogs" type="CanvasLayer" parent="."]
 layer = 3
+
+[node name="CanvasLayerOverlay" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerOverlay"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("14_n5n3b")
 
 [node name="AudioStreamPlayerGameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_p1eh5")
