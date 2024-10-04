@@ -1,9 +1,9 @@
 class_name PlayerDamageDisplay
-extends HBoxContainer
+extends VBoxContainer
 
 @export var player_damage: PlayerDamage
 
-@onready var label_total_damage: Label = $LabelTotalDamage
+@onready var label_total_damage: Label = $HBoxContainer/LabelTotalDamage
 @onready var h_flow_container_damages: HFlowContainer = $HFlowContainerDamages
 
 

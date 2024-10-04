@@ -1,17 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://yam6ts6l84j0"]
+[gd_scene load_steps=3 format=3 uid="uid://yam6ts6l84j0"]
 
 [ext_resource type="Script" path="res://player/ui/player_damage_display.gd" id="1_rxhht"]
+[ext_resource type="Texture2D" uid="uid://lil0loxnldb5" path="res://player/ui/damage.png" id="2_d31nv"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 32
+[node name="PlayerDamageDisplay" type="VBoxContainer"]
+offset_right = 715.0
+offset_bottom = 105.0
 script = ExtResource("1_rxhht")
 
-[node name="LabelTotalDamage" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_d31nv")
+expand_mode = 2
+
+[node name="LabelTotalDamage" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"LabelLarge"
 text = "1"
+vertical_alignment = 1
 
 [node name="HFlowContainerDamages" type="HFlowContainer" parent="."]
 custom_minimum_size = Vector2(640, 0)
