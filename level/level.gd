@@ -11,6 +11,7 @@ var game_over: bool = false
 @onready var label_fps: Label = $CanvasLayer/LabelFPS
 @onready var game_over_screen: GameOverScreen = $CanvasLayerGameOver/GameOverScreen
 @onready var canvas_layer_dialogs: CanvasLayer = $CanvasLayerDialogs
+@onready var audio_stream_player_game_over: AudioStreamPlayer = $AudioStreamPlayerGameOver
 
 
 func _ready() -> void:
@@ -55,6 +56,7 @@ func cleanup() -> void:
 
 func _on_player_died() -> void:
 	game_over = true
+	audio_stream_player_game_over.play()
 	game_over_screen.fade_in()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Game.highscores.add_entry(HighscoreEntry.create(Game.player_name, time))

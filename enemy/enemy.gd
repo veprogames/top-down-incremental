@@ -3,6 +3,8 @@ extends Area2D
 
 signal current_hp_changed(hp: float)
 
+const StreamDeath: AudioStream = preload("res://enemy/death.ogg")
+
 @export var hp: float = 1 : set = set_hp
 @export var color: Color = Color.RED
 
@@ -80,6 +82,7 @@ func damage(amount: float) -> void:
 		dead = true
 		Events.enemy_died.emit(self)
 		queue_free()
+		GlobalSound.play(StreamDeath)
 		spawn_gems.call_deferred()
 
 
@@ -174,6 +177,7 @@ func _on_area_entered(area: Area2D) -> void:
 		)
 		knockback_velocity += bullet.get_velocity().normalized() * 100
 		bullet.queue_free()
+		audio_stream_player_hit.pitch_scale = 2 - current_hp / hp
 		audio_stream_player_hit.play()
 		damage(bullet.damage)
 

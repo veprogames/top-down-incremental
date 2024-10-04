@@ -31,6 +31,7 @@ var gem_pitch: float = 0.8
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
 @onready var auto_aim_area: AutoAimArea = $AutoAimArea
+@onready var audio_stream_player_hurt: AudioStreamPlayer = $AudioStreamPlayerHurt
 
 
 func _ready() -> void:
@@ -102,6 +103,8 @@ func can_get_hit() -> bool:
 func _on_took_damage() -> void:
 	hp -= 1
 	invincibility_timer = 1.0
+	audio_stream_player_hurt.pitch_scale = 1.8 - hp / float(max_hp)
+	audio_stream_player_hurt.play()
 	
 	if hp <= 0:
 		died.emit()

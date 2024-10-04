@@ -18,6 +18,12 @@ var did_hit: bool = false
 
 var raycast_timer: float = 0.0
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
+func _ready() -> void:
+	audio_stream_player.pitch_scale = 0.5 + base_speed / 500
+
 
 func _process(_delta: float) -> void:
 	animated_sprite.modulate.a = min(1.0, 2.0 * (1.0 - travelled))
