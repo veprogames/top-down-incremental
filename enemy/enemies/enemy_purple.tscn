@@ -9,7 +9,7 @@
 radius = 30.0
 
 [node name="EnemyPurple" instance=ExtResource("1_hm0e4")]
-hp = 200000.0
+hp = 100000.0
 color = Color(0.501961, 0, 1, 1)
 
 [node name="EnemyVisuals" parent="." index="0"]

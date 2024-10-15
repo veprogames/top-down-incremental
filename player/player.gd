@@ -66,7 +66,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# calculate after slide to prevent "running into wall" exploit
-	var additional_firerate: float = 0.02 * velocity.length()
+	var additional_firerate: float = 0.03 * velocity.length()
+	additional_firerate = minf(additional_firerate, 25)
 	shoot_timer += (5 + additional_firerate) * delta
 	
 	if shoot_timer >= 1.0:

@@ -8,7 +8,7 @@
 radius = 38.0
 
 [node name="EnemyWhite" instance=ExtResource("1_m2cps")]
-hp = 5e+06
+hp = 1e+06
 color = Color(1, 1, 1, 1)
 
 [node name="EnemyVisuals" parent="." index="0"]
