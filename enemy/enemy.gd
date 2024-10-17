@@ -96,7 +96,7 @@ func create_damage_number(dmg: float) -> void:
 
 
 func shoot(bullet: BulletEnemy) -> void:
-	bullet.rotation = enemy_visuals.rotation
+	bullet.rotation += enemy_visuals.rotation
 	get_tree().current_scene.add_child(bullet)
 
 

@@ -10,7 +10,7 @@
 radius = 32.0
 
 [node name="EnemyBlue" instance=ExtResource("1_2th5u")]
-hp = 30000.0
+hp = 45000.0
 color = Color(0, 0.25098, 1, 1)
 
 [node name="EnemyMoveBehaviorNoise" parent="." index="0" instance=ExtResource("2_k0hjg")]
@@ -26,4 +26,4 @@ texture = ExtResource("2_wa38a")
 shape = SubResource("CircleShape2D_hg83i")
 
 [node name="BulletPodEnemy" parent="." index="5" instance=ExtResource("5_1u1cf")]
-firerate = 0.25
+firerate = 0.15
