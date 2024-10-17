@@ -8,7 +8,6 @@ var game_over: bool = false
 @onready var enemies: Node2D = $Enemies
 @onready var gems: Node2D = $Gems
 
-@onready var label_fps: Label = $CanvasLayer/LabelFPS
 @onready var game_over_screen: GameOverScreen = $CanvasLayerGameOver/GameOverScreen
 @onready var canvas_layer_dialogs: CanvasLayer = $CanvasLayerDialogs
 @onready var audio_stream_player_game_over: AudioStreamPlayer = $AudioStreamPlayerGameOver
@@ -26,9 +25,6 @@ func _process(delta: float) -> void:
 			var pause_menu: PauseMenu = PauseMenu.create()
 			canvas_layer_dialogs.add_child(pause_menu)
 			pause_menu.options_pressed.connect(_on_pause_menu_options_pressed)
-			
-	
-	label_fps.text = "%d fps" % Engine.get_frames_per_second()
 	
 	cleanup()
 
