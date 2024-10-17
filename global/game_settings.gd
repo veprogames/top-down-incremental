@@ -13,11 +13,14 @@ var physics_mode: int : set = set_physics_mode
 
 var sensitivity: float = 0.5 : set = set_sensitivity
 
+var max_fps: int = 0 : set = set_max_fps
+
 func _init() -> void:
 	config.load(CONFIG_PATH)
 	
 	physics_mode = config.get_value("Game", "physics", PHYSICS_HIGH)
 	sensitivity = config.get_value("Game", "sensitivity", 0.5)
+	max_fps = config.get_value("Game", "max_fps", 0)
 
 
 func save() -> void:
@@ -29,6 +32,8 @@ func apply() -> void:
 		Engine.physics_ticks_per_second = 60
 	else:
 		Engine.physics_ticks_per_second = 30
+	
+	Engine.max_fps = max_fps
 
 
 func set_physics_mode(mode: int) -> void:
@@ -41,3 +46,8 @@ func set_physics_mode(mode: int) -> void:
 func set_sensitivity(s: float) -> void:
 	sensitivity = s
 	config.set_value("Game", "sensitivity", s)
+
+
+func set_max_fps(fps: int) -> void:
+	max_fps = fps
+	config.set_value("Game", "max_fps", fps)

@@ -4,9 +4,11 @@ extends Panel
 static var Scene: PackedScene = preload("res://ui/options_menu.tscn")
 
 @onready var h_slider_sensitivity: HSlider = $MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity
+@onready var spin_box_max_fps: SpinBox = $MarginContainer/VBoxContainer/HBoxContainer3/SpinBoxMaxFps
 
 func _ready() -> void:
 	h_slider_sensitivity.value = Game.settings.sensitivity
+	spin_box_max_fps.value = Game.settings.max_fps
 	
 	scale = Vector2.ZERO
 	var tween: Tween = create_tween()
@@ -42,3 +44,8 @@ static func create() -> OptionsMenu:
 
 func _on_h_slider_sensitivity_value_changed(value: float) -> void:
 	Game.settings.sensitivity = value
+
+
+func _on_spin_box_value_changed(value: float) -> void:
+	var fps: int = value as int
+	Game.settings.max_fps = fps
