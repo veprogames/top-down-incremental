@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://p2u1wsdh76yo"]
+[gd_scene load_steps=5 format=3 uid="uid://p2u1wsdh76yo"]
 
 [ext_resource type="PackedScene" uid="uid://bprric2282qeg" path="res://enemy/enemy.tscn" id="1_3dxtf"]
 [ext_resource type="Texture2D" uid="uid://dqq7vsuplwh7a" path="res://enemy/enemies/enemy_black.png" id="2_w7se1"]
 [ext_resource type="PackedScene" uid="uid://3h6i1t8cbtp" path="res://behavior/enemy_move_behavior_chase.tscn" id="3_fq0xj"]
-[ext_resource type="PackedScene" uid="uid://bc4ilkra67325" path="res://bullet/enemy/bullet_pod_enemy.tscn" id="4_ajk2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dp03"]
 radius = 42.0
 
 [node name="EnemyBlack" instance=ExtResource("1_3dxtf")]
-hp = 5e+07
+hp = 1e+07
 color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [node name="EnemyVisuals" parent="." index="0"]
@@ -19,8 +18,4 @@ texture = ExtResource("2_w7se1")
 shape = SubResource("CircleShape2D_0dp03")
 
 [node name="EnemyMoveBehaviorChase" parent="." index="3" instance=ExtResource("3_fq0xj")]
-speed = 300.0
-
-[node name="BulletPodEnemy" parent="." index="4" instance=ExtResource("4_ajk2o")]
-position = Vector2(28, 0)
-firerate = 1.5
+speed = 350.0

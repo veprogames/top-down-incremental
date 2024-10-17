@@ -21,5 +21,6 @@ func _on_timer_timeout() -> void:
 
 func create_bullet() -> BulletEnemy:
 	var bullet: BulletEnemy = super.create_bullet() as BulletEnemy
-	bullet.base_speed = enemy.velocity.length() + 100
+	bullet.base_speed = minf(300, enemy.velocity.length() + 100)
+	bullet.rotation = rotation
 	return bullet
