@@ -30,7 +30,9 @@ jobs:
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
 
       - name: Create staging directories
-        run: mkdir -v -p export/{linux,windows}
+        run: |
+          mkdir -v -p export/linux
+          mkdir -v -p export/windows
 
       - name: Export Builds
         run: |
