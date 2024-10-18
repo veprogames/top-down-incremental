@@ -3,30 +3,28 @@ extends VBoxContainer
 
 @export var player_damage: PlayerDamage
 
-@onready var label_total_damage: Label = $HBoxContainer/LabelTotalDamage
-@onready var h_flow_container_damages: HFlowContainer = $HFlowContainerDamages
+@onready var grid_container_damages: GridContainer = $GridContainerDamages
+@onready var total_damage_label: TotalDamageLabel = $TotalDamageLabel
 
 
 func _ready() -> void:
-	update()
-	
+	total_damage_label.damage = player_damage.get_damage()
 	player_damage.damage_part_changed.connect(_on_player_damage_damage_part_changed)
 
 
-func update() -> void:
-	label_total_damage.text = F.nl(player_damage.get_damage())
+func update(key: String, value: float) -> void:
+	var color: Color = Color.from_string(key, Color.WHITE)
+	total_damage_label.set_damage_with_color(player_damage.get_damage(), color)
 	
-	for key: String in player_damage._map:
-		var label: Label
-		if not h_flow_container_damages.has_node(key):
-			label = Label.new()
-			label.name = key
-			label.modulate = Color.from_string(key, Color.WHITE)
-			h_flow_container_damages.add_child(label)
-		else:
-			label = h_flow_container_damages.get_node(key) as Label
-		label.text = "x%.2f" % player_damage._map[key]
+	var label: DamageMultiplierLabel
+	if not grid_container_damages.has_node(key):
+		label = DamageMultiplierLabel.create(color)
+		label.name = key
+		grid_container_damages.add_child(label)
+	else:
+		label = grid_container_damages.get_node(key) as DamageMultiplierLabel
+	label.multiplier = value
 
 
-func _on_player_damage_damage_part_changed(_key: String, _value: float) -> void:
-	update()
+func _on_player_damage_damage_part_changed(key: String, value: float) -> void:
+	update(key, value)
