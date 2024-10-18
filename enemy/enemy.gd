@@ -77,6 +77,10 @@ func _physics_process(delta: float) -> void:
 
 func damage(amount: float) -> void:
 	current_hp -= amount
+	# prevent side effects such as:
+	# - absurdly large health bar rects
+	# - or absurdly high audio pitch leading to game freezes
+	current_hp = maxf(0, current_hp)
 	create_damage_number(amount)
 	if not dead and current_hp <= 0:
 		dead = true

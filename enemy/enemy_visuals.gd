@@ -7,7 +7,7 @@ extends Node2D
 
 var tex_size: Vector2
 
-var health_bar_alpha: float = -2.0
+var health_bar_alpha: float = -4.0
 var health_bar_base_rect: Rect2
 var health_bar_fill_rect: Rect2
 var health_bar_fill_amount: float = 1.0
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	health_bar_alpha = clampf(health_bar_alpha - delta * 1.25, -2.0, 2.0)
+	health_bar_alpha = clampf(health_bar_alpha - delta * 1.25, -4.0, 2.0)
 	
 	if health_bar_alpha >= 0:
 		queue_redraw()
