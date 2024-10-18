@@ -30,7 +30,7 @@ static func nl(num: float) -> String:
 		return "%d" % num
 	
 	var result: String = ""
-	while num > 1000:
+	while num >= 1000:
 		result = "%03d %s" % [fmod(num, 1000.0), result]
 		num /= 1000
 	result = "%d %s" % [num, result]
