@@ -27,9 +27,9 @@ func set_damage_with_color(dmg: float, color: Color) -> void:
 
 func get_pulse_strength() -> float:
 	return clampf(
-		log(damage) / log(10) * 0.0125 - 0.02,
+		remap(log(damage) / log(10), 3, 9, 0, 0.06),
 		0,
-		0.1
+		0.06
 	)
 
 
