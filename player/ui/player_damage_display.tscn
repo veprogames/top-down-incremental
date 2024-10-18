@@ -1,29 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://yam6ts6l84j0"]
 
 [ext_resource type="Script" path="res://player/ui/player_damage_display.gd" id="1_rxhht"]
-[ext_resource type="Texture2D" uid="uid://lil0loxnldb5" path="res://player/ui/damage.png" id="2_d31nv"]
+[ext_resource type="PackedScene" uid="uid://c7hshh5gh3mxf" path="res://player/ui/total_damage_label.tscn" id="2_xhjeb"]
 
 [node name="PlayerDamageDisplay" type="VBoxContainer"]
+custom_minimum_size = Vector2(768, 0)
 offset_right = 715.0
 offset_bottom = 105.0
 script = ExtResource("1_rxhht")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TotalDamageLabel" parent="." instance=ExtResource("2_xhjeb")]
 layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
-texture = ExtResource("2_d31nv")
-expand_mode = 2
 
-[node name="LabelTotalDamage" type="Label" parent="HBoxContainer"]
+[node name="GridContainerDamages" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_type_variation = &"LabelLarge"
-text = "1"
-vertical_alignment = 1
-
-[node name="HFlowContainerDamages" type="HFlowContainer" parent="."]
-custom_minimum_size = Vector2(640, 0)
-layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 5

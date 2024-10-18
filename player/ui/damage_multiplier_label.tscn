@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jqndjhb655dh"]
+
+[ext_resource type="Script" path="res://player/ui/damage_multiplier_label.gd" id="1_1qtrr"]
+
+[node name="DamageMultiplierLabel" type="Label"]
+script = ExtResource("1_1qtrr")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7hshh5gh3mxf"]
+
+[ext_resource type="Texture2D" uid="uid://lil0loxnldb5" path="res://player/ui/damage.png" id="1_4lm3a"]
+[ext_resource type="Script" path="res://player/ui/total_damage_label.gd" id="1_tph5p"]
+
+[node name="TotalDamageLabel" type="HBoxContainer"]
+offset_right = 1.0
+offset_bottom = 37.0
+alignment = 1
+script = ExtResource("1_tph5p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_4lm3a")
+expand_mode = 2
+
+[node name="LabelTotalDamage" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelLarge"
+text = "1"
+vertical_alignment = 1
