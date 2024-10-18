@@ -60,13 +60,8 @@ jobs:
         with:
           name: game_windows
           path: game_windows.zip
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "game_linux.zip,game_windows.zip"
+      
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "game_linux.zip,game_windows.zip"
