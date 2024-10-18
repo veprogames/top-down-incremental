@@ -3,7 +3,7 @@ extends VBoxContainer
 
 @export var player_damage: PlayerDamage
 
-@onready var grid_container_damages: GridContainer = $GridContainerDamages
+@onready var grid_container_damages: GridContainer = $CenterContainer/GridContainerDamages
 @onready var total_damage_label: TotalDamageLabel = $TotalDamageLabel
 
 

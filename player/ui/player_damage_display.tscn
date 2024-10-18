@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7hshh5gh3mxf" path="res://player/ui/total_damage_label.tscn" id="2_xhjeb"]
 
 [node name="PlayerDamageDisplay" type="VBoxContainer"]
+custom_minimum_size = Vector2(768, 0)
 offset_right = 715.0
 offset_bottom = 105.0
 script = ExtResource("1_rxhht")
@@ -11,7 +12,10 @@ script = ExtResource("1_rxhht")
 [node name="TotalDamageLabel" parent="." instance=ExtResource("2_xhjeb")]
 layout_mode = 2
 
-[node name="GridContainerDamages" type="GridContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainerDamages" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 columns = 5
