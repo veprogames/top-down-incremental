@@ -36,6 +36,11 @@ theme_type_variation = &"LabelLarge"
 text = "Options"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Performance"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -55,24 +60,6 @@ text = "Low"
 layout_mode = 2
 text = "High"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Sensitivity" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Sensitivity
-"
-
-[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HSliderSensitivity" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -89,6 +76,11 @@ layout_mode = 2
 max_value = 9999.0
 step = 10.0
 rounded = true
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -128,6 +120,29 @@ min_value = -42.0
 max_value = 0.0
 step = 0.01
 
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sensitivity" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Sensitivity
+"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSliderSensitivity" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -139,8 +154,8 @@ text = "Close"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonPhysicsLow" to="." method="_on_button_physics_low_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonPhysicsHigh" to="." method="_on_button_physics_high_pressed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity" to="." method="_on_h_slider_sensitivity_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/SpinBoxMaxFps" to="." method="_on_spin_box_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer4/HSliderMasterVol" to="." method="_on_h_slider_master_vol_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer5/HSliderMusicVol" to="." method="_on_h_slider_music_vol_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity" to="." method="_on_h_slider_sensitivity_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonClose" to="." method="_on_button_close_pressed"]
