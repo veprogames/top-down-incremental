@@ -27,6 +27,9 @@ var hp: int
 
 var gem_pitch: float = 0.8
 
+# used for not calculating nearest enemy every physics frame
+var cached_nearest_enemy: Enemy
+
 @export var player_damage: PlayerDamage
 
 @onready var bullet_pod_player: BulletPodPlayer = $BulletPodPlayer
@@ -65,16 +68,28 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	# calculate after slide to prevent "running into wall" exploit
-	var additional_firerate: float = 0.03 * velocity.length()
-	additional_firerate = minf(additional_firerate, 25)
-	shoot_timer += (5 + additional_firerate) * delta
+	shoot_timer += get_current_firerate() * delta
 	
 	if shoot_timer >= 1.0:
 		shoot_timer -= 1.0
 		shoot.call_deferred()
 	
 	invincibility_timer = maxf(0.0, invincibility_timer - delta)
+
+
+func get_current_firerate() -> float:
+	var nearest: Enemy = cached_nearest_enemy
+	
+	if not is_instance_valid(nearest):
+		return 5
+	
+	var distance: float = (nearest.global_position - global_position).length()
+	var additional: float = clampf(
+		remap(distance, 0, 200, 16, 0),
+		0,
+		15
+	)
+	return 5 + additional
 
 
 func get_shoot_angle(target: Enemy) -> float:
@@ -84,10 +99,11 @@ func get_shoot_angle(target: Enemy) -> float:
 
 
 func shoot() -> void:
-	var target: Enemy = auto_aim_area.get_nearest_enemy()
+	# recalculate cached nearest enemy only here
+	cached_nearest_enemy = auto_aim_area.get_nearest_enemy()
 	var bullet: BulletPlayer = bullet_pod_player.create_bullet()
-	bullet.rotation = get_shoot_angle(target)
-	bullet.target_enemy = target
+	bullet.rotation = get_shoot_angle(cached_nearest_enemy)
+	bullet.target_enemy = cached_nearest_enemy
 	owner.add_child(bullet)
 
 

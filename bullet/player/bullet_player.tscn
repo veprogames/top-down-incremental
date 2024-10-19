@@ -39,4 +39,5 @@ autoplay = "default"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource("4_564fi")
+pitch_scale = 0.7
 autoplay = true
