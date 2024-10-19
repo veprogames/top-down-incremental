@@ -90,6 +90,44 @@ max_value = 9999.0
 step = 10.0
 rounded = true
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolume" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Master Volume
+"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSliderMasterVol" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+min_value = -42.0
+max_value = 0.0
+step = 0.01
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicVolume" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Music Volume
+"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSliderMusicVol" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+min_value = -42.0
+max_value = 0.0
+step = 0.01
+
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -103,4 +141,6 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonPhysicsHigh" to="." method="_on_button_physics_high_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity" to="." method="_on_h_slider_sensitivity_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/SpinBoxMaxFps" to="." method="_on_spin_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer4/HSliderMasterVol" to="." method="_on_h_slider_master_vol_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer5/HSliderMusicVol" to="." method="_on_h_slider_music_vol_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonClose" to="." method="_on_button_close_pressed"]

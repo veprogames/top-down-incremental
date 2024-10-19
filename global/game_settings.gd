@@ -15,12 +15,17 @@ var sensitivity: float = 0.5 : set = set_sensitivity
 
 var max_fps: int = 0 : set = set_max_fps
 
+var master_volume: float = 0.0 : set = set_master_volume
+var music_volume: float = 0.0 : set = set_music_volume
+
 func _init() -> void:
 	config.load(CONFIG_PATH)
 	
 	physics_mode = config.get_value("Game", "physics", PHYSICS_HIGH)
 	sensitivity = config.get_value("Game", "sensitivity", 0.5)
 	max_fps = config.get_value("Game", "max_fps", 0)
+	master_volume = config.get_value("Game", "master_volume", 0)
+	music_volume = config.get_value("Game", "music_volume", 0)
 
 
 func save() -> void:
@@ -34,6 +39,12 @@ func apply() -> void:
 		Engine.physics_ticks_per_second = 30
 	
 	Engine.max_fps = max_fps
+	
+	AudioServer.set_bus_volume_db(0, master_volume)
+	AudioServer.set_bus_volume_db(1, music_volume)
+	
+	AudioServer.set_bus_mute(0, master_volume <= -42)
+	AudioServer.set_bus_mute(1, music_volume <= -42)
 
 
 func set_physics_mode(mode: int) -> void:
@@ -51,3 +62,15 @@ func set_sensitivity(s: float) -> void:
 func set_max_fps(fps: int) -> void:
 	max_fps = fps
 	config.set_value("Game", "max_fps", fps)
+
+
+func set_master_volume(vol: float) -> void:
+	master_volume = vol
+	config.set_value("Game", "master_volume", vol)
+	apply()
+
+
+func set_music_volume(vol: float) -> void:
+	music_volume = vol
+	config.set_value("Game", "music_volume", vol)
+	apply()

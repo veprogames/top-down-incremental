@@ -5,10 +5,14 @@ static var Scene: PackedScene = preload("res://ui/options_menu.tscn")
 
 @onready var h_slider_sensitivity: HSlider = $MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity
 @onready var spin_box_max_fps: SpinBox = $MarginContainer/VBoxContainer/HBoxContainer3/SpinBoxMaxFps
+@onready var h_slider_master_vol: HSlider = $MarginContainer/VBoxContainer/HBoxContainer4/HSliderMasterVol
+@onready var h_slider_music_vol: HSlider = $MarginContainer/VBoxContainer/HBoxContainer5/HSliderMusicVol
 
 func _ready() -> void:
 	h_slider_sensitivity.value = Game.settings.sensitivity
 	spin_box_max_fps.value = Game.settings.max_fps
+	h_slider_master_vol.value = Game.settings.master_volume
+	h_slider_music_vol.value = Game.settings.music_volume
 	
 	scale = Vector2.ZERO
 	var tween: Tween = create_tween()
@@ -49,3 +53,11 @@ func _on_h_slider_sensitivity_value_changed(value: float) -> void:
 func _on_spin_box_value_changed(value: float) -> void:
 	var fps: int = value as int
 	Game.settings.max_fps = fps
+
+
+func _on_h_slider_master_vol_value_changed(value: float) -> void:
+	Game.settings.master_volume = value
+
+
+func _on_h_slider_music_vol_value_changed(value: float) -> void:
+	Game.settings.music_volume = value
