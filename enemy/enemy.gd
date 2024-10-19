@@ -28,6 +28,8 @@ var raycast_timer: float = 0.0
 # prevent multi drop
 var dead: bool = false
 
+var last_bullet_hit: BulletPlayer
+
 func _ready() -> void:
 	assert(is_instance_valid(level))
 	
@@ -172,8 +174,8 @@ func _on_area_entered(area: Area2D) -> void:
 		auto_aim_area.add_enemy(self)
 	
 	var bullet: BulletPlayer = area as BulletPlayer
-	if bullet and not bullet.did_hit:
-		bullet.did_hit = true
+	if bullet and bullet != last_bullet_hit:
+		last_bullet_hit = bullet
 		var sparkle: Sparkle = spawn_sparkle()
 		sparkle.global_position = bullet.global_position + Vector2(
 			randf_range(-4, 4),

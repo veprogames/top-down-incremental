@@ -14,8 +14,6 @@ const SPEED_MULTIPLIER_BASE: float = 1.5
 const SPEED_MULTIPLIER_ACCELERATION: float = 1.0
 var speed_multiplier: float = SPEED_MULTIPLIER_BASE
 
-var did_hit: bool = false
-
 var raycast_timer: float = 0.0
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
