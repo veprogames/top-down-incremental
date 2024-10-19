@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://blpfg0kc3wacb"]
+[gd_scene load_steps=21 format=4 uid="uid://blpfg0kc3wacb"]
 
 [ext_resource type="Texture2D" uid="uid://rbcfgod2ii5f" path="res://level/tiles/grass.png" id="1_3sncf"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_08xo1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b23dh2uhv8tvh" path="res://level/ui/level_time.tscn" id="6_u8prs"]
 [ext_resource type="PackedScene" uid="uid://brn8qtcwgwwuq" path="res://spawner/level_spawner.tscn" id="7_geyi5"]
 [ext_resource type="PackedScene" uid="uid://bvo27dq1r1rt3" path="res://level/ui/game_over_screen.tscn" id="13_23rtj"]
+[ext_resource type="PackedScene" uid="uid://c3rpyxpvvk3gj" path="res://level/ui/hyper_overlay.tscn" id="13_frpj2"]
 [ext_resource type="Texture2D" uid="uid://bx3ofnxwmi0xx" path="res://level/ui/vignette.png" id="14_n5n3b"]
 [ext_resource type="AudioStream" uid="uid://conc5xl6dvld0" path="res://level/game_over.ogg" id="14_p1eh5"]
 
@@ -155,6 +156,8 @@ anchor_right = 1.0
 offset_right = 0.0
 offset_bottom = 73.0
 grow_horizontal = 2
+
+[node name="HyperOverlay" parent="CanvasLayer" instance=ExtResource("13_frpj2")]
 
 [node name="CanvasLayerGameOver" type="CanvasLayer" parent="."]
 layer = 2

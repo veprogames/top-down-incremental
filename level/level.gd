@@ -11,6 +11,7 @@ var game_over: bool = false
 @onready var game_over_screen: GameOverScreen = $CanvasLayerGameOver/GameOverScreen
 @onready var canvas_layer_dialogs: CanvasLayer = $CanvasLayerDialogs
 @onready var audio_stream_player_game_over: AudioStreamPlayer = $AudioStreamPlayerGameOver
+@onready var hyper_overlay: HyperOverlay = $CanvasLayer/HyperOverlay
 
 
 func _ready() -> void:
@@ -25,6 +26,9 @@ func _process(delta: float) -> void:
 			var pause_menu: PauseMenu = PauseMenu.create()
 			canvas_layer_dialogs.add_child(pause_menu)
 			pause_menu.options_pressed.connect(_on_pause_menu_options_pressed)
+	
+	if not hyper_overlay.is_faded_in() and EnemyFactory.is_lategame(time):
+		hyper_overlay.fade_in()
 	
 	cleanup()
 
