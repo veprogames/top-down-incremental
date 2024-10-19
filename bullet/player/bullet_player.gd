@@ -56,3 +56,9 @@ func _physics_process(delta: float) -> void:
 
 func get_velocity() -> Vector2:
 	return super.get_velocity() * speed_multiplier
+
+
+func set_pitch(pitch: float) -> void:
+	if not is_node_ready():
+		await ready
+	audio_stream_player.pitch_scale = pitch
