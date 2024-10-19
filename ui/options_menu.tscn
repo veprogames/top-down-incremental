@@ -38,6 +38,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 text = "Performance"
 horizontal_alignment = 1
 
@@ -79,6 +80,7 @@ rounded = true
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 text = "SFX"
 horizontal_alignment = 1
 
@@ -122,6 +124,7 @@ step = 0.01
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 text = "Controls"
 horizontal_alignment = 1
 
