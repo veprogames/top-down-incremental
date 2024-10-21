@@ -33,10 +33,12 @@ func _set_color(col: Color) -> void:
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
+	position = position.clampf(-1000, 1000)
 	
 	if is_instance_valid(magnet):
 		var distance: Vector2 = magnet.global_position - global_position
 		var speed: float = 50_000.0 / distance.length_squared()
+		speed = minf(speed, 512.0)
 		velocity += (distance).normalized() * speed
 	
 	velocity = velocity.lerp(Vector2.ZERO, FRICTION * delta)
