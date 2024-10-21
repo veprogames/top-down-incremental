@@ -20,6 +20,8 @@ func _ready() -> void:
 	shape_cast_2d.force_shapecast_update()
 	while is_instance_valid(shape_cast_2d) and shape_cast_2d.get_collision_count() > 0:
 		position += 100 * Vector2.RIGHT.rotated(randf() * TAU)
+		# world boundaries are not detected for some reason
+		position = position.clampf(-1000, 1000)
 		
 		attempts -= 1
 		if attempts == 0:
