@@ -44,7 +44,10 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
 	if mouse_event:
-		move_velocity += mouse_event.relative * MOVE_SPEED
+		move_velocity += mouse_event.relative
+	var touch_event: InputEventScreenDrag = event as InputEventScreenDrag
+	if touch_event:
+		move_velocity += touch_event.relative
 
 
 func _process(delta: float) -> void:
@@ -54,7 +57,20 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = move_velocity * Game.settings.sensitivity + secondary_velocity
+	var input_vector: Vector2 = Input.get_vector(
+		&"player_left",
+		&"player_right",
+		&"player_up",
+		&"player_down"
+	)
+	
+	if input_vector != Vector2.ZERO:
+		velocity = input_vector * 15
+		velocity /= 1 + Input.get_action_strength(&"player_move_slow")
+		velocity *= 1 + Input.get_action_strength(&"player_move_fast")
+	else:
+		velocity = move_velocity
+	velocity = velocity * MOVE_SPEED * Game.settings.sensitivity + secondary_velocity
 	move_velocity = Vector2.ZERO
 	
 	# prevent jittering by only rotating at a min. velocity
@@ -77,7 +93,21 @@ func _physics_process(delta: float) -> void:
 	invincibility_timer = maxf(0.0, invincibility_timer - delta)
 
 
+func get_input_shoot_vector() -> Vector2:
+	return Input.get_vector(
+		&"player_shoot_left",
+		&"player_shoot_right",
+		&"player_shoot_up",
+		&"player_shoot_down"
+	)
+
+
 func get_current_firerate() -> float:
+	var shoot_vector: Vector2 = get_input_shoot_vector()
+	
+	if shoot_vector != Vector2.ZERO:
+		return 10
+	
 	var nearest: Enemy = cached_nearest_enemy
 	
 	if not is_instance_valid(nearest):
@@ -93,6 +123,11 @@ func get_current_firerate() -> float:
 
 
 func get_shoot_angle(target: Enemy) -> float:
+	var shoot_vector: Vector2 = get_input_shoot_vector()
+	
+	if shoot_vector != Vector2.ZERO:
+		return shoot_vector.angle()
+	
 	if is_instance_valid(target):
 		return (target.global_position - global_position).angle()
 	return rotation
