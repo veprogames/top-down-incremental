@@ -52,6 +52,9 @@ func _on_h_slider_sensitivity_value_changed(value: float) -> void:
 
 func _on_spin_box_value_changed(value: float) -> void:
 	var fps: int = value as int
+	if fps > 0 and fps < 30:
+		fps = 30
+		spin_box_max_fps.value = 30
 	Game.settings.max_fps = fps
 
 
@@ -61,3 +64,11 @@ func _on_h_slider_master_vol_value_changed(value: float) -> void:
 
 func _on_h_slider_music_vol_value_changed(value: float) -> void:
 	Game.settings.music_volume = value
+
+
+func _on_button_vsync_off_pressed() -> void:
+	Game.settings.vsync = Game.settings.VSYNC_OFF
+
+
+func _on_button_vsync_on_pressed() -> void:
+	Game.settings.vsync = Game.settings.VSYNC_ON

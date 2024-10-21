@@ -78,6 +78,25 @@ max_value = 9999.0
 step = 10.0
 rounded = true
 
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelVsync" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonVsyncOff" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Off"
+
+[node name="ButtonVsyncOn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "On"
+
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
@@ -158,6 +177,8 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonPhysicsLow" to="." method="_on_button_physics_low_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonPhysicsHigh" to="." method="_on_button_physics_high_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/SpinBoxMaxFps" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer6/ButtonVsyncOff" to="." method="_on_button_vsync_off_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer6/ButtonVsyncOn" to="." method="_on_button_vsync_on_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer4/HSliderMasterVol" to="." method="_on_h_slider_master_vol_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer5/HSliderMusicVol" to="." method="_on_h_slider_music_vol_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/HSliderSensitivity" to="." method="_on_h_slider_sensitivity_value_changed"]
