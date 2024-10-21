@@ -3,6 +3,7 @@ extends Node2D
 
 var LevelScene: PackedScene = preload("res://level/level.tscn")
 var HighscoreScene: PackedScene = preload("res://highscore/highscore_menu.tscn")
+var HelpScene: PackedScene = preload("res://help_menu/help_menu.tscn")
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var line_edit_player_name: LineEdit = $CanvasLayer/VBoxContainer2/LineEditPlayerName
@@ -35,3 +36,7 @@ func _on_button_highscores_pressed() -> void:
 
 func _on_line_edit_player_name_text_changed(new_text: String) -> void:
 	Game.player_name = new_text
+
+
+func _on_button_help_pressed() -> void:
+	SceneSwitcher.change(HelpScene)
