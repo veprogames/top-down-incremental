@@ -115,9 +115,9 @@ func get_current_firerate() -> float:
 	
 	var distance: float = (nearest.global_position - global_position).length()
 	var additional: float = clampf(
-		remap(distance, 0, 200, 16, 0),
+		remap(distance, 0, 200, 10, 0),
 		0,
-		15
+		10
 	)
 	return 5 + additional
 
