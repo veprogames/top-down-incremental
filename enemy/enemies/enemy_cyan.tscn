@@ -11,6 +11,7 @@ radius = 26.0
 [node name="EnemyCyan" instance=ExtResource("1_2dewm")]
 hp = 7500.0
 color = Color(0, 1, 1, 1)
+spawn_indicator_scale = 1.75
 
 [node name="EnemyVisuals" parent="." index="0"]
 texture = ExtResource("2_k6xf7")

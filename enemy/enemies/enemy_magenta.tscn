@@ -12,6 +12,7 @@ radius = 40.0
 [node name="EnemyMagenta" instance=ExtResource("1_ikw3l")]
 hp = 625000.0
 color = Color(1, 0, 1, 1)
+spawn_indicator_scale = 2.5
 
 [node name="EnemyVisuals" parent="." index="0"]
 texture = ExtResource("2_d66we")

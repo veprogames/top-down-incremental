@@ -7,6 +7,7 @@ const StreamDeath: AudioStream = preload("res://enemy/death.ogg")
 
 @export var hp: float = 1 : set = set_hp
 @export var color: Color = Color.RED
+@export var spawn_indicator_scale: float = 1.0
 
 @onready var level: Level = get_tree().current_scene as Level
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D

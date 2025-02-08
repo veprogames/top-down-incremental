@@ -17,6 +17,9 @@ var did_spawn: bool = false
 func _ready() -> void:
 	assert(is_instance_valid(level))
 	
+	animated_sprite_2d.modulate = enemy.color
+	animated_sprite_2d.scale *= enemy.spawn_indicator_scale
+	
 	shape_cast_2d.force_shapecast_update()
 	while is_instance_valid(shape_cast_2d) and shape_cast_2d.get_collision_count() > 0:
 		position += 100 * Vector2.RIGHT.rotated(randf() * TAU)
