@@ -20,7 +20,7 @@ position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_qvgtv")
 
 [node name="EnemyMoveBehaviorChase" parent="." index="3" instance=ExtResource("3_b37jo")]
-speed = 170.0
+speed = 150.0
 
 [node name="EnemyMoveBehaviorNoise" parent="." index="4" instance=ExtResource("4_g2qsu")]
 speed = 2.0
